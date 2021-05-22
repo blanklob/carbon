@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import test from './math'
 
 
 function component() {
@@ -13,3 +14,4 @@ function component() {
 document.body.appendChild(component());
 console.log('Hello Youness')
 document.querySelector('.title').innerHTML = "Youness is a ."
+test()
