@@ -7,6 +7,9 @@ module.exports = {
     filename: 'prod.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  devServer: {
+    contentBase: './dist',
+  },
   module: {
     rules: [
       {

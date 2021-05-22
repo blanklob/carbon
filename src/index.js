@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import './css/style.css'
 
 
 function component() {
@@ -12,4 +11,5 @@ function component() {
   }
   
 document.body.appendChild(component());
-console.log('Hello')
+console.log('Hello Youness')
+document.querySelector('.title').innerHTML = "Youness is a ."
