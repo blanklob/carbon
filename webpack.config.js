@@ -1,21 +1,24 @@
-const path = require('path');
+// Node imports
+const path = require('path')
+
+// Directories names
+const dirDist = path.join(__dirname, 'public')
+const dirApp = path.join(__dirname, 'app')
+
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    app: dirApp + '/index.js',
+  },
   output: {
-    filename: 'prod.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
+    path: dirDist,
   },
+  devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist',
+    contentBase: dirDist,
+    compress: true,
+    port: 9000,
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
-  },
-};
+}

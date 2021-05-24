@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "start": "webpack serve --open",
+    "start": "webpack serve --open --progress",
     "watch": "webpack --watch"
   },
   "repository": {
