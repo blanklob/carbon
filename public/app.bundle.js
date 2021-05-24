@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math */ \"./app/math.js\");\n/* harmony import */ var index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! index.css */ \"./styles/index.css\");\n\n\nconsole.log('Hello Youness');\ndocument.querySelector('.title').innerHTML = \"Youness is a .\";\n(0,_math__WEBPACK_IMPORTED_MODULE_0__.default)()[(1, 2, 3)].map(function (n) {\n  return n + 1;\n});\n\n//# sourceURL=webpack://pfe-front/./app/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math */ \"./app/math.js\");\n/* harmony import */ var index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! index.css */ \"./styles/index.css\");\n\n\nconsole.log('Hello Youness');\ndocument.querySelector('.title').innerHTML = \"Youness is a .\";\n(0,_math__WEBPACK_IMPORTED_MODULE_0__.default)()[(1, 2, 3)].map(function (n) {\n  return n + 1;\n});\nfetch('http://localhost:8000/youness').then(function (res) {\n  console.log(res);\n}).then(function (data) {\n  console.log(data);\n});\n\n//# sourceURL=webpack://pfe-front/./app/index.js?");
 
 /***/ }),
 

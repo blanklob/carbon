@@ -2,6 +2,10 @@ import test from './math'
 import 'index.css'
   
 console.log('Hello Youness')
-document.querySelector('.title').innerHTML = "Youness is a ."
-test()
-[1, 2, 3].map(n => n + 1);
+
+fetch('http://localhost:8000/youness')
+.then(response => response.json())
+.then(res => {
+    document.querySelector('.title').innerHTML = "Python à renvoyé ce message: " + res.msg
+})
+.catch(error => alert("Erreur : " + error));
