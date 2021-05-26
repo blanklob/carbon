@@ -2,8 +2,7 @@
 const path = require('path')
 
 // Webpack plugins 
-const CopyPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // Directories 
 const appDir = path.join(__dirname, 'app')
@@ -29,21 +28,17 @@ module.exports = {
 
   // Webpack plugins
   plugins: [
-    // #1: Copy files from one dire to another 
-    new CopyPlugin({
-      patterns: [
-        { from: assetsDir, to: distDir},
-      ],
-    }),
-
-    // #2: Extract CSS from JS to separate css file
-    new MiniCssExtractPlugin()
+    // #1: Extract CSS from JS to separate css file
+    new MiniCssExtractPlugin({
+      filename: '[name].bundle.css',
+      chunkFilename: '[id].css',
+    })
   ],
 
   // Webpack Loaders
   module: {
     rules: [
-      // Bundling Javascript
+      // #1: Bundling Javascript
       {
         test: /\.m?js$/,
         exclude: nodeDir,
@@ -56,7 +51,7 @@ module.exports = {
           }
         }
       },
-      // Bundling CSS 
+      // #2: Bundling CSS 
       {
         test: /\.s[ac]ss$/i,
         use: [
