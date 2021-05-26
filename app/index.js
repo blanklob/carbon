@@ -1,1 +1,5 @@
-console.log('Hello Developer.')
+import test from './math'
+
+
+console.log('Hi youness')
+test()

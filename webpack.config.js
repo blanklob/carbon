@@ -1,6 +1,9 @@
 // General imports
 const path = require('path')
 
+// Webpack plugins imports
+const CopyPlugin = require('copy-webpack-plugin')
+
 // Directories path
 const appDir = path.join(__dirname, 'app')
 const styleDir = path.join(__dirname, 'styles')
@@ -10,7 +13,7 @@ const nodeDir = path.join(__dirname, 'node_modules')
 
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     // Entry
     entry: {
         app: path.join(appDir, 'index.js')
@@ -22,7 +25,33 @@ module.exports = {
         path: distDir
     },
 
-    // Dev server configuration
+    // Webpack plugins
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          { from: assetsDir, to: distDir},
+        ],
+      }),
+    ],
+
+    // Webpack Loaders
+    module: {
+      rules: [
+        // Use Babel for Javascript
+        {
+          test: /\.m?js$/,
+          exclude: nodeDir,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
+        }
+      ]
+    },
+    
+    // Development server setup
     devServer: {
       contentBase: distDir,
       compress: true,
