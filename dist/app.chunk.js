@@ -1,1 +1,0 @@
-!function(){"use strict";console.log("Visualisation executed with success.")}();

@@ -1,12 +1,8 @@
-
-
-$primary-size: 3rem;
-
-.navigation {
-    font-size: $primary-size;
-}
+@import './fonts';
 
 
 body {
     background-color: #ad8585;
+    font-family: $primary-font;
+    font-weight: bold;
 }

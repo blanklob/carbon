@@ -48,7 +48,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: pagesDir, to: distDir },
-        { from: assetsDir, to: distDir }
       ],
     }),
   ],
@@ -83,6 +82,10 @@ module.exports = {
           "postcss-loader"
         ],
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
     ]
   },
 
@@ -92,6 +95,7 @@ module.exports = {
       Pages: pagesDir,
       Styles: stylesDir,
       App: appDir,
+      Dist: distDir
     },
   },
   
