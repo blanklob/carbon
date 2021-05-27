@@ -1,7 +1,12 @@
-@import './logo';
+
 
 $primary-size: 3rem;
 
 .navigation {
     font-size: $primary-size;
+}
+
+
+body {
+    background-color: #ad8585;
 }

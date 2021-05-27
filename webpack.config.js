@@ -12,6 +12,8 @@ const appDir = path.join(__dirname, 'app')
 const distDir = path.join(__dirname, 'dist')
 const nodeDir = path.join(__dirname, 'node_modules')
 const pagesDir = path.join(__dirname, 'pages')
+const stylesDir = path.join(__dirname, 'styles')
+const assetsDir = path.join(__dirname, 'assets')
 
 // Env variables
 const DEV_ENV = process.env.NODE_ENV 
@@ -26,15 +28,16 @@ module.exports = {
 
   // Output
   output: {
-      filename: '[name].bundle.js',
-      path: distDir
+      filename: '[name].chunk.js',
+      path: distDir,
+      clean: true,
   },
 
   // Webpack plugins
   plugins: [
     // #1: Extract CSS from JS to separate css file
     new MiniCssExtractPlugin({
-      filename: '[name].bundle.css',
+      filename: '[name].chunk.css',
       chunkFilename: '[id].css',
     }),
     // #2: To have access to env variables 
@@ -45,6 +48,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: pagesDir, to: distDir },
+        { from: assetsDir, to: distDir }
       ],
     }),
   ],
@@ -80,6 +84,15 @@ module.exports = {
         ],
       },
     ]
+  },
+
+  resolve: {
+    alias: {
+      Assets: assetsDir,
+      Pages: pagesDir,
+      Styles: stylesDir,
+      App: appDir,
+    },
   },
   
   // Development server setup
