@@ -1,9 +1,13 @@
-import output from './data/getProducts'
-import hello from './data/getCollections'
+// SCSS imports
 import scss from '../styles/index.scss'
-import html from '../views/index.pug'
 
-console.log('youness')
-hello()
-output()
+// JS Imports
+import { animation } from './animations/fadeIn'
+import getProduct from './data/getProducts'
+import getCollection from './data/getCollections'
+
+animation()
+
+let title1 = document.querySelector('.title1')
+
 
