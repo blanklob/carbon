@@ -1,3 +1,6 @@
 /* Importing globals */
 @import './globals/reset';
-@import './partials/nav';
+@import './globals/document';
+
+/* Importing components */
+@import './components/header'

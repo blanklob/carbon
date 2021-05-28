@@ -1,3 +1,4 @@
+// Typefaces
 @font-face {
     font-family: 'Neue Metana';
     src: url('Assets/fonts/NeueMetana-Regular.woff2') format('woff2'),
@@ -18,4 +19,5 @@
     font-display: swap;
 }
 
+// Declaring font variables
 $primary-font: "Neue Metana";
