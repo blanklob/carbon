@@ -24,8 +24,9 @@ module.exports = {
   // Entry
   entry: {
       app: path.join(appDir, 'index.js'),
+      styles: path.join(stylesDir, 'index.scss')
   },
-
+  
   // Output
   output: {
       filename: '[name].chunk.js',

@@ -1,8 +1,12 @@
-/* Importing utils */
+/* Importing utils and helpers */
 @import './utils/variables';
 @import './utils/fonts';
-@import './utils/layout';
+@import './utils/mixins';
 
 /* Importing base */
 @import './base/reset';
 @import './base/globals';
+
+/* Important components */
+@import './pages/home';
+

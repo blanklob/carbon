@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack",
     "watch": "webpack --watch"
   },
   "repository": {

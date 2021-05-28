@@ -1,1 +1,9 @@
+.navigation__menu {
+    @include d-flex (column);
+}
 
+.header {
+    @include d-flex;
+    @include font(22px);
+    padding: 1rem;
+}
