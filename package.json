@@ -6,6 +6,9 @@
     "build": "webpack",
     "watch": "webpack --watch"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/younessidbakkasse/ecommerce-project.git"
@@ -21,6 +24,7 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "*",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
     "dotenv": "^10.0.0",

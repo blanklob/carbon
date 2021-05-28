@@ -4,6 +4,6 @@
 
 .header {
     @include d-flex;
-    @include font(22px);
+    @include font(14px);
     padding: 1rem;
 }

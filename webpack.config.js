@@ -5,7 +5,9 @@ const dotenv = require('dotenv').config()
 
 // Webpack plugins 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin")
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 
 // Directories 
 const appDir = path.join(__dirname, 'app')
@@ -51,6 +53,8 @@ module.exports = {
         { from: pagesDir, to: distDir },
       ],
     }),
+    // #4: Cleaner
+    new CleanWebpackPlugin()
   ],
 
   // Webpack Loaders
@@ -69,9 +73,9 @@ module.exports = {
           }
         }
       },
-      // #2: Bundling CSS 
+      // #2: Bundling SCSS 
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           // Creates `style` nodes from JS strings
           MiniCssExtractPlugin.loader,

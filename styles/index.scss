@@ -1,4 +1,3 @@
-/* Importing utils and helpers */
 @import './utils/variables';
 @import './utils/fonts';
 @import './utils/mixins';
@@ -9,4 +8,8 @@
 
 /* Important components */
 @import './pages/home';
+
+::selection {
+    background-color: black;
+}
 
