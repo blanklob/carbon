@@ -1,6 +1,8 @@
-/* Importing globals */
-@import './globals/reset';
-@import './globals/document';
+/* Importing utils */
+@import './utils/variables';
+@import './utils/fonts';
+@import './utils/layout';
 
-/* Importing components */
-@import './components/header'
+/* Importing base */
+@import './base/reset';
+@import './base/globals';

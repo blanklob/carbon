@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Neutral Face';
+    src: url('Assets/fonts/NeutralFaceRegular.woff2') format('woff2'),
+        url('Assets/fonts/NeutralFaceRegular.woff') format('woff'),
+        url('Assets/fonts/NeutralFaceRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neutral Face';
+    src: url('Assets/fonts/NeutralFaceBold.woff2') format('woff2'),
+        url('Assets/fonts/NeutralFaceBold.woff') format('woff'),
+        url('Assets/fonts/NeutralFaceBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
