@@ -32,7 +32,7 @@ module.exports = {
   // Output
   output: {
       filename: '[name].chunk.js',
-      path: distDir,
+      path: path.resolve(distDir),
       clean: true,
   },
 
