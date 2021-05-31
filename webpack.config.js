@@ -1,24 +1,22 @@
 // General libs
 const path = require('path')
-const webpack = require('webpack')
-const dotenv = require('dotenv').config()
+require('dotenv').config()
 
 // Webpack plugins 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyPlugin = require("copy-webpack-plugin")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 // Directories 
 const appDir = path.join(__dirname, 'app')
 const distDir = path.join(__dirname, 'dist')
 const nodeDir = path.join(__dirname, 'node_modules')
-const pagesDir = path.join(__dirname, 'pages')
+const pagesDir = path.join(__dirname, 'views')
 const stylesDir = path.join(__dirname, 'styles')
 const assetsDir = path.join(__dirname, 'assets')
 
 // Env variables
-const DEV_ENV = process.env.NODE_ENV 
+const DEV_ENV = process.env.NODE_ENV || "development"
 
 module.exports = {
   // Mode
@@ -31,7 +29,7 @@ module.exports = {
   
   // Output
   output: {
-      filename: '[name].chunk.js',
+      filename: '[name].[hash].js',
       path: path.resolve(distDir),
       clean: true,
   },
@@ -40,21 +38,13 @@ module.exports = {
   plugins: [
     // #1: Extract CSS from JS to separate css file
     new MiniCssExtractPlugin({
-      filename: '[name].chunk.css',
-      chunkFilename: '[id].css',
+      filename: '[name].[hash].css',
     }),
-    // #2: To have access to env variables 
-    new webpack.DefinePlugin({
-      DEV_ENV: DEV_ENV,
-    }),
-    // #3: Copy pages from src to build directory
-    new CopyPlugin({
-      patterns: [
-        { from: pagesDir, to: distDir },
-      ],
-    }),
-    // #4: Cleaner
-    new CleanWebpackPlugin()
+    // #2: Generate Html files to dist
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.join(pagesDir, 'index.pug'),
+    })
   ],
 
   // Webpack Loaders
@@ -91,6 +81,10 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ]
   },
 
@@ -109,5 +103,5 @@ module.exports = {
     contentBase: distDir,
     compress: true,
     port: 9000,
-  },
-};
+  }
+}
