@@ -2,12 +2,13 @@
 const path = require('path')
 require('dotenv').config()
 
-// Webpack plugins 
+// Webpack plugins
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
 
 
-// Directories 
+// Directories
 const appDir = path.join(__dirname, 'app')
 const distDir = path.join(__dirname, 'dist')
 const nodeDir = path.join(__dirname, 'node_modules')
@@ -26,7 +27,7 @@ module.exports = {
       app: path.join(appDir, 'index.js'),
       styles: path.join(stylesDir, 'index.scss')
   },
-  
+
   // Output
   output: {
       filename: '[name].[hash].js',
@@ -43,13 +44,23 @@ module.exports = {
     // #2: Generate Html files to dist
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: path.join(pagesDir, 'index.pug'),
-    })
+      template: path.join(pagesDir, 'index.pug')
+    }),
+    // #3: Copy images from Assets to Dist
+    new CopyPlugin({
+      patterns: [
+        { from: path.join(assetsDir, 'shared'), to: distDir },
+      ],
+    }),
   ],
 
   // Webpack Loaders
   module: {
     rules: [
+      {
+        test: /\.pug$/,
+        use: ['pug-loader']
+      },
       // #1: Bundling Javascript
       {
         test: /\.m?js$/,
@@ -63,7 +74,7 @@ module.exports = {
           }
         }
       },
-      // #2: Bundling SCSS 
+      // #2: Bundling SCSS
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -97,11 +108,13 @@ module.exports = {
       Dist: distDir
     },
   },
-  
+
   // Development server setup
   devServer: {
     contentBase: distDir,
     compress: true,
     port: 9000,
-  }
+  },
+  devtool: false
+
 }

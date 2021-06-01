@@ -1,26 +1,20 @@
-# top-most EditorConfig file
+# EditorConfig is awesome!
+
+# Mark this as the root editorconfig file
 root = true
 
-# Unix-style newlines with a newline ending every file
+# Base ruleset for all files
 [*]
-end_of_line = lf
+trim_trailing_whitespace = true
 insert_final_newline = true
-
-# Matches multiple files with brace expansion notation
-# Set default charset
-[*.{js}]
-charset = utf-8
-
-# Tab indentation (no size specified)
-[Makefile]
-indent_style = tab
-
-# Indentation override for all JS under lib directory
-[*.js]
 indent_style = space
 indent_size = 2
 
-# Matches the exact files either package.json or .travis.yml
-[{package.json}]
-indent_style = space
-indent_size = 2
+# Override rules for markdown
+[*.md]
+# trailing whitespace is significant in markdown -> do not remove
+trim_trailing_whitespace = false
+
+[*.patch]
+trim_trailing_whitespace = false
+insert_final_newline = false
