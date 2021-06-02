@@ -2,6 +2,7 @@
 import print from './classes/visualisation'
 
 
-print()
-print()
-print()
+document.querySelector('.navigation__item').onclick = function () {
+  const tania = 'Tania est magnifique.'
+  console.log(tania)
+}
