@@ -16,4 +16,4 @@ Pour installer Yarn, il faut utiliser la commande NPM suivant, c'est un peu comm
 
 - Après l'installation est complète avec succées, vous pouvez lancer le serveur de development avec la commande suivante puis voir ``localhost:9000`` sur un navigateur de votre choix, je recommande Chrome pour ces devtools puissantes. 
 
-```yarn start```
+```yarn dev```
