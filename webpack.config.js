@@ -11,7 +11,7 @@ const CopyPlugin = require("copy-webpack-plugin")
 const appDir = path.join(__dirname, 'app')
 const distDir = path.join(__dirname, 'dist')
 const nodeDir = path.join(__dirname, 'node_modules')
-const pagesDir = path.join(__dirname, 'views')
+const viewsDir = path.join(__dirname, 'views')
 const stylesDir = path.join(__dirname, 'styles')
 const assetsDir = path.join(__dirname, 'assets')
 
@@ -24,7 +24,7 @@ module.exports = {
   // Entry
   entry: {
       app: path.join(appDir, 'index.js'),
-      styles: path.join(stylesDir, 'index.scss')
+      styles: path.join(stylesDir, 'index.scss'),
   },
 
   // Output
@@ -43,7 +43,7 @@ module.exports = {
     // #2: Generate Html files to dist
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: path.join(pagesDir, 'index.pug')
+      template: path.join(viewsDir, 'index.pug')
     }),
     // #3: Copy images from Assets to Dist
     new CopyPlugin({
@@ -105,7 +105,7 @@ module.exports = {
   resolve: {
     alias: {
       Assets: assetsDir,
-      Pages: pagesDir,
+      Pages: viewsDir,
       Styles: stylesDir,
       App: appDir,
       Dist: distDir

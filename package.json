@@ -5,7 +5,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "yarn build && webpack serve",
-    "build": "webpack && rm -f dist/styles.*.js ",
+    "build": "webpack",
     "watch": "webpack --watch"
   },
   "browserslist": [

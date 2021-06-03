@@ -1,9 +1,25 @@
-.header__navigation {
-  @include font(1rem, "normal");
+.header-frame {
   @include d-flex;
-  text-align: center;
+
+  .header__menu {
+    display: flex
+  }
+
+  .header__btns {
+    display: flex;
+
+    .header__social {
+      display: flex;
+      @include font;
+    }
+
+    .btn {
+      @include button;
+    }
+  }
 }
 
-.btn {
-  @include button;
-}
+
+
+
+
