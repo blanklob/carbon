@@ -1,0 +1,79 @@
+.cards {
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: calc(100% - 40px);
+    margin: auto;
+    .card {
+        display: grid;
+        grid-template-columns: 0.4fr 1fr;
+        grid-template-rows: 1fr auto;
+        gap: 15px;
+        grid-template-areas:
+            "img title"
+            "paragraph paragraph";
+        border: 2px solid #000000;
+        border-radius: 10px;
+        box-shadow: 0px 5px 0px 0px black;
+        width: 280px;
+        padding: 20px;
+        margin: auto;
+        img {
+            width: 100%;
+            height: 73px; // Temporary
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: white;
+            grid-area: img;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            grid-area: title;
+        } 
+        small {
+            font-size: 14px;
+            grid-area: paragraph;
+        }
+    }
+    #card-green {
+        background-color: #3EC865;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 25px 30px;
+        grid-template-areas:
+            "one one three three"
+            ". two two .";
+        .card {
+            width: 300px;
+        }
+        #card-1 {
+            grid-area: one;
+        }
+        #card-green {
+            grid-area: two;
+        }#card-3 {
+            grid-area: three;
+        }
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .cards {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 18px;
+        .card {
+            width: 300px;
+            margin: 0;
+        }
+    }
+}
