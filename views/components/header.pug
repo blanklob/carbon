@@ -1,2 +1,11 @@
-header.header-container
-  h1.header__title Hello World!
+header.header-frame.container(role="header")
+  nav.header__navigation(role="navigation")
+    ul.header__menu
+      li.header__menu__item
+        a.logo.logo--main(href="#") Carbon
+      li.header__menu__item
+        a.header__menu__link(href="#") How deos it work ?
+    //- Including socials
+    include ../snippets/socials
+
+
