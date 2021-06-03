@@ -1,11 +1,12 @@
-@import './base/reset';
-@import './utils/variables';
-@import './utils/fonts';
-@import './utils/mixins';
-
 /* Importing base */
-@import './base/globals';
+@import 'base/reset';
+@import 'base/fonts';
+@import 'base/variables';
+@import 'base/globals';
 
-/* Important components */
-@import './components/header';
+/* Importing utils/tools */
+@import 'utils/mixins';
+
+/* Importint components */
+@import 'components/banner';
 

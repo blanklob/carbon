@@ -6,23 +6,44 @@
   justify-content: $align;
 }
 
-@mixin font ($size: 16px, $weight: normal, $color: $black-10) {
+@mixin container($max, $actual){
+  max-width: $max;
+  width: $actual;
+  margin: 0 auto;
+}
+
+@mixin font ($size: 1em, $weight: normal, $color: $black-10, $letter-spacing: 0) {
   font-family: $p-font;
   font-weight: $weight;
   font-size: $size;
   color: $color;
+  letter-spacing: $letter-spacing;
 }
 
-@mixin button($type: "primary") {
+@mixin input {
+  @include font($color: $black-10);
+  padding: .8em 1.4em;
+  background-color: $white-10;
+  border: 1px solid $black-10;
+  border-radius: 10px;
+  box-shadow: $hard-shadows-small;
+  box-sizing: border-box;
+
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+@mixin button($type: "primary", $h-padding: 2em) {
   @if $type == "primary" {
     @include font(1rem, bold, $white-10);
   }
-  padding: 1rem 1.8rem;
+  padding: .8em $h-padding;
   box-sizing: border-box;
   background-color: $green-8;
   border: 1px solid $black-10;
   border-radius: 10px;
-  box-shadow: $hard-shadows;
+  box-shadow: $hard-shadows-normal;
   cursor: pointer;
   transition: background-color .3s ease-in-out;
 
@@ -33,4 +54,29 @@
   &:active {
     outline: none;
   }
+}
+
+button {
+  @include button;
+}
+
+input {
+  @include input;
+}
+
+h1 {
+  @include font(5em, 800, $black-10, -4px);
+}
+
+h5 {
+  @include font(1.2em, 300, $black-10, 0.5px);
+}
+
+h6 {
+  @include font(.6em, 300, $black-10);
+}
+
+@function column-w-desktop ($max){
+  $column-width:  ($max - 240px)/9;
+  @return $column-width
 }

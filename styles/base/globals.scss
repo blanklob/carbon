@@ -1,0 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background-color: $green-8;
+  color: $black-10
+}
