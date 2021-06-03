@@ -1,6 +1,9 @@
 .header__navigation {
-    @include font(1rem, "normal");
-    @include d-flex;
-    text-align: center;
+  @include font(1rem, "normal");
+  @include d-flex;
+  text-align: center;
 }
 
+.btn {
+  @include button;
+}

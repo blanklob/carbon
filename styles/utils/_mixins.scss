@@ -1,14 +1,36 @@
 // Layout mixins
 @mixin d-flex ($direction: row, $align: space-between) {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: $direction;
-    justify-content: $align;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: $direction;
+  justify-content: $align;
 }
 
-@mixin font ($size: 16px, $weight: normal) {
-    font-family: $primary-font;
-    font-weight: $weight;
-    font-size: $size;
-    color: $primary-black;
+@mixin font ($size: 16px, $weight: normal, $color: $black-10) {
+  font-family: $p-font;
+  font-weight: $weight;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin button($type: "primary") {
+  @if $type == "primary" {
+    @include font(1rem, bold, $white-10);
+  }
+  padding: 1rem 1.8rem;
+  box-sizing: border-box;
+  background-color: $green-8;
+  border: 1px solid $black-10;
+  border-radius: 10px;
+  box-shadow: $hard-shadows;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+
+  &:hover {
+    background-color: $green-10;
+  }
+
+  &:active {
+    outline: none;
+  }
 }

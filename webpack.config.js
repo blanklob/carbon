@@ -5,8 +5,7 @@ require('dotenv').config()
 // Webpack plugins
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyPlugin = require("copy-webpack-plugin");
-
+const CopyPlugin = require("copy-webpack-plugin")
 
 // Directories
 const appDir = path.join(__dirname, 'app')
@@ -91,6 +90,10 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
+
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
