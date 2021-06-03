@@ -1,8 +1,8 @@
 {
-  "name": "ecommerce",
-  "short_name": "ecommerce",
+  "name": "Carbon",
+  "short_name": "Carbon",
   "start_url": "/",
-  "theme_color": "#151c13",
-  "background_color": "#151c13",
+  "theme_color": "#3EC865",
+  "background_color": "#3EC865",
   "display": "standalone"
 }

@@ -4,7 +4,7 @@
   "author": "Youness Id bakkasse",
   "license": "ISC",
   "scripts": {
-    "start": "yarn build && webpack serve",
+    "dev": "yarn build && webpack serve",
     "build": "webpack && rm -f dist/styles.*.js ",
     "watch": "webpack --watch"
   },
