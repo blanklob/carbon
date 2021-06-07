@@ -13,8 +13,36 @@ $white-8: #FBFBFB;
 // Typefaces
 $p-font: "Montserrat", sans-serif;
 
+$headline-h1: (na: 32px, sm: 56px, lg: 80px);
+$headline-h2: (na: 22px, sm: 28px, lg: 36px);
+$headline-h4: (na: 18px, sm: 20px, lg: 20px);
+
+$text-regular: (na: 12px, sm: 14px, lg: 18px);
+$text-bold: (na: 32px, sm: 56px, lg: 80px);
+
+
 // Effects
 $hard-shadows-normal: 0px 4px 0px $black-8;
 $hard-shadows-small: 0px 2px 0px $black-8;
+
+// Breakpoints
+$browser-context: 16px;
+$breakpoints: (
+    na: 0px,
+    xs: 320px,
+    s:  420px,
+    sm: 700px,
+    md: 900px,
+    lg: 1200px,
+    xl: 1800px,
+);
+
+@function bp-size($bp) {
+  @if not map-get($breakpoints, $bp) {
+    @warn "Unknown breakpoint #{$bp}.";
+  } @else {
+    @return map-get($breakpoints, $bp);
+  }
+}
 
 

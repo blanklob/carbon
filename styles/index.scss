@@ -1,13 +1,12 @@
+/* Importing (not included in the outputed CSS) */
+@import 'base/variables';
+@import 'utils/mixins';
+
 /* Importing base */
 @import 'base/reset';
 @import 'base/fonts';
-@import 'base/variables';
 @import 'base/globals';
 
-/* Importing utils/tools */
-@import 'utils/mixins';
-
 /* Important components */
-@import 'components/banner';
-@import 'components/cards';
+@import 'components/header';
 

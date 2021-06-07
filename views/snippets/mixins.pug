@@ -6,5 +6,6 @@ mixin button(type, value)
 mixin socials(...socials)
   ul.header__social
     each social in socials
-      li.header__social__item(class=social.name.toLowerCase(), data-social=social.name)
-        a.header__social__link(href=social.link)= social.name
+      li.header__social__item(class=social.name.toLowerCase())
+        a.header__social__link(href=social.link)
+          img.header__social__icon(src=social.name.toLowerCase() + ".svg", alt=social.name)

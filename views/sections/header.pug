@@ -1,11 +1,12 @@
 //- Header content
-header.header-frame.container(role="header")
+header.header.container(role="header")
   nav.header__navigation(role="navigation")
     ul.header__menu(itemscope, itemtype="http://schema.org/Organization")
       li.header__menu__item.header__logo-container
-        a.header__logo(href="#", itemprop="logo") Carbon
+        a.header__logo__link(href="#", itemprop="logo") Carbon
       li.header__menu__item
         a.header__menu__link(href="#", itemprop="url") How deos it work ?
   div.header__wrapper
-    +socials({name: "LinkedIn", link: "#"}, {name: "Github", link: "#"}, {name: "Email", link: "#"})
-    +button('btn--primary', 'Get Started')
+    +socials({name: "Facebook", link: "#"}, {name: "linkedin", link: "#"}, {name: "Email", link: "#"})
+    +button('header__cta-btn', 'Get Started')
+

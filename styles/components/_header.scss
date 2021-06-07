@@ -1,0 +1,31 @@
+.header {
+  @include d-flex($wrap: nowrap);
+  align-items: center;
+
+  .header__menu {
+    @extend .header;
+    padding: 1.5em 0;
+
+    .header__menu__item {
+      margin-right: em(40px);
+
+      .header__logo__link {
+        font-size: em(22px);
+        font-weight: bold;
+      }
+    }
+
+  }
+
+  .header__wrapper {
+    @extend .header;
+
+    .header__social__item {
+      margin-right: 15px;
+    }
+
+    .header__cta-btn {
+      margin: em(22px) 0;
+    }
+  }
+}
