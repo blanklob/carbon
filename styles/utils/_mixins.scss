@@ -65,7 +65,11 @@ input {
 }
 
 h1 {
-  @include font(5em, 800, $black-10, -4px);
+  @include font(5em, 800, $black-10, -3px);
+}
+
+h4 {
+  @include font(1.4em, bold, $black-10, 0.5px);
 }
 
 h5 {

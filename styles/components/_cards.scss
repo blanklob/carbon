@@ -1,5 +1,4 @@
 .cards {
-    font-family: Montserrat;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -13,7 +12,7 @@
         grid-template-areas:
             "img title"
             "paragraph paragraph";
-        border: 2px solid #000000;
+        border: 2px solid $black-10;
         border-radius: 10px;
         box-shadow: 0px 5px 0px 0px black;
         width: 280px;
@@ -31,7 +30,7 @@
             font-size: 18px;
             font-weight: bold;
             grid-area: title;
-        } 
+        }
         small {
             font-size: 14px;
             grid-area: paragraph;

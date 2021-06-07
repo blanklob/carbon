@@ -1,0 +1,10 @@
+//- Button
+mixin button(type, value)
+  button.btn(class=type, type="button", name="button")= value
+
+//- Socials
+mixin socials(...socials)
+  ul.header__social
+    each social in socials
+      li.header__social__item(class=social.name.toLowerCase(), data-social=social.name)
+        a.header__social__link(href=social.link)= social.name

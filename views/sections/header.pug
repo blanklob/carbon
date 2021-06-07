@@ -1,22 +1,11 @@
-//- Button
-mixin button(type, value)
-  button.btn(class=type, type="button")= value
-
-//- Socials
-//- mixin socials(...socials)
-//-   ul.header__social
-//-     each social in socials
-//-       li.header__social__item(class=social.name.toLowerCase())
-//-         a.header__social__link(href=social.link)= social.name
-
-//- //- Header content
-//- header.header-frame.container(role="header")
-//-   nav.header__navigation(role="navigation")
-//-     ul.header__menu
-//-       li.header__menu__item
-//-         a.logo.logo--main(href="#") Carbon
-//-       li.header__menu__item
-//-         a.header__menu__link(href="#") How deos it work ?
-//-   .header__btns
-//-     +socials({name: "LinkedIn", link: "#"}, {name: "Github", link: "#"}, {name: "Email", link: "#"})
-//-     +button('btn--primary', 'Get Started')
+//- Header content
+header.header-frame.container(role="header")
+  nav.header__navigation(role="navigation")
+    ul.header__menu(itemscope, itemtype="http://schema.org/Organization")
+      li.header__menu__item.header__logo-container
+        a.header__logo(href="#", itemprop="logo") Carbon
+      li.header__menu__item
+        a.header__menu__link(href="#", itemprop="url") How deos it work ?
+  div.header__wrapper
+    +socials({name: "LinkedIn", link: "#"}, {name: "Github", link: "#"}, {name: "Email", link: "#"})
+    +button('btn--primary', 'Get Started')
