@@ -26,7 +26,6 @@ module.exports = {
   // Entry
   entry: {
       app: path.join(appDir, 'index.js'),
-      styles: path.join(stylesDir, 'index.scss'),
   },
 
   // Output
@@ -75,7 +74,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', {"useBuiltIns": "usage", "corejs": 3}]
+              ['@babel/preset-env']
             ]
           }
         }

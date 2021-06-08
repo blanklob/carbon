@@ -3,12 +3,15 @@ include ./snippets/mixins
 
 //- Main Document
 doctype html
-html(lang="en")
+html(lang="en" class="no-js")
   head
     include ./partials/head
   body
+    include ./partials/preloader
     include ./sections/header
-    main(role="main")
+    main#main(role="main", style="display: none")
       include ./sections/banner
       include ./sections/cards
+      include ./partials/noscript
+      include ./sections/footer
 

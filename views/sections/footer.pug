@@ -1,2 +1,12 @@
-footer.footer
-  p Mon footer est top.
+footer.footer-container.container
+  .footer__links
+    nav.footer__navigation(role="navigation")
+      ul.footer__navigation__list
+        li.navigation__item
+          a.footer__logo__link(href="#") Carbon
+        li.navigation__item.text-regular.hide-below-sm
+          a.footer__link(href="#") Privacy Policy
+        li.navigation__item.text-regular.hide-below-sm
+          a.footer__link(href="#") Licence
+  .footer__socials
+    +socials({name: "Facebook", link: "#"}, {name: "linkedin", link: "#"}, {name: "Email", link: "#"})

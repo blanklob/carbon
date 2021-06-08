@@ -1,5 +1,4 @@
 @use "sass:math";
-@use "sass:string";
 
 @function em($px) {
   @return #{math.div($px, $browser-context)}em;
@@ -10,6 +9,7 @@
   flex-wrap: $wrap;
   flex-direction: $direction;
   justify-content: $align;
+  align-items: $align;
 }
 
 

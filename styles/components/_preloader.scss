@@ -1,0 +1,22 @@
+.preloader {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: $green-8;
+  @include d-flex($align: center);
+  z-index: 10;
+
+  .preloader__container {
+    text-align: center;
+    @include max(md) {
+      max-width: 80%;
+    }
+    max-width: 50%;
+    overflow: hidden;
+
+    .preloader__data {
+      margin-bottom: 25px;
+    }
+
+  }
+}

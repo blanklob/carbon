@@ -1,0 +1,30 @@
+.footer-container{
+  @include d-flex($wrap: nowrap);
+  align-items: center;
+  padding-bottom: em(30px);
+
+
+  .footer__navigation__list{
+    @extend .footer-container;
+
+    .navigation__item{
+      margin-right: em(40px);
+
+      .footer__logo__link {
+        @include font($size: 22px, $weight: 800, $letter-spacing: -.5px);
+      }
+
+    }
+
+  }
+    .footer__socials {
+      @extend .footer-container;
+
+      .footer__social__link{
+        margin-right: 1.5em;
+      }
+      li {
+        margin-right: 15px;
+      }
+    }
+}
