@@ -19,11 +19,12 @@
   font-size: em($size);
   color: $color;
   letter-spacing: $letter-spacing;
+  line-height: 1.1;
 }
 
 @mixin input {
   @include font($color: $black-10);
-  padding: em(15px) em(30px);
+  padding: em(12px) em(20px);
   background-color: $white-10;
   border: 1px solid $black-10;
   border-radius: 10px;
@@ -37,7 +38,7 @@
 
 @mixin button($h-padding: 30px) {
   @include font($size: 14px, $weight: bold, $color: $white-10);
-  padding: 16px em($h-padding);
+  padding: 14px em($h-padding);
   box-sizing: border-box;
   background-color: $green-8;
   border: 1px solid $black-10;
@@ -63,6 +64,12 @@
   }
 }
 
+@mixin max($bp, $device: "screen") {
+  @media only #{$device} and (max-width: #{bp-size($bp)}) {
+    @content;
+  }
+}
+
 .container {
   margin: 0 auto;
 
@@ -70,6 +77,19 @@
     @include min($bp) {
       width: 95%;
       max-width: $bp-size;
+    }
+  }
+}
+
+// Hide @ breakpoints
+@each $bp, $bp-size in $breakpoints {
+  @include max($bp) {
+    .hide-below-#{$bp} {
+      display: none;
+    }
+
+    .show-below-#{$bp} {
+      display: block;
     }
   }
 }

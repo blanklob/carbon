@@ -11,6 +11,14 @@ button {
   @include button;
 }
 
+input {
+  @include input;
+}
+
+label {
+  display: none;
+}
+
 ul {
   @include d-flex($wrap: nowrap);
 }
