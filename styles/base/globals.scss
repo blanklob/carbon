@@ -40,14 +40,6 @@ h2 {
   }
 }
 
-p, a {
-  @each $bp, $h-size in $text-regular {
-    @include min($bp) {
-      @include font($h-size, 300, $black-8, -.5px)
-    }
-  }
-}
-
 h4 {
   @each $bp, $h-size in $headline-h4 {
     @include min($bp) {
@@ -55,6 +47,31 @@ h4 {
     }
   }
 }
+
+.text-big {
+  @each $bp, $h-size in $text-big {
+    @include min($bp) {
+      @include font($h-size, 300, $black-4, 0px)
+    }
+  }
+}
+
+.text-regular {
+  @each $bp, $h-size in $text-regular {
+    @include min($bp) {
+      @include font($h-size, 300, $black-4, .25px)
+    }
+  }
+}
+
+.text-small {
+  @each $bp, $h-size in $text-small {
+    @include min($bp) {
+      @include font($h-size, 200, $black-4, .5px)
+    }
+  }
+}
+
 
 
 
