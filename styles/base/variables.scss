@@ -22,8 +22,10 @@ $text-regular: (na: 12px, sm: 14px, lg: 18px);
 $text-small: (na: 11px, sm: 12px, lg: 16px);
 
 // Effects
+$hard-shadows-big: 0px 6px 0px $black-10;
 $hard-shadows-normal: 0px 4px 0px $black-8;
 $hard-shadows-small: 0px 2px 0px $black-8;
+$border-radius: 10px;
 
 // Breakpoints
 $browser-context: 16px;

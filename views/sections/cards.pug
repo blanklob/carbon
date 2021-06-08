@@ -1,15 +1,18 @@
-section.cards
-    div.card#card-1
-        img()
-        h4.card__title See how you can save the planet.
-        small Lorem ipsum sit amet, consectetur adipiscing elit maecenas nibh.
-    div.card#card-green
-        img()
-        p Check real life people impact on planet.
-        small Lorem ipsum sit amet, consectetur adipiscing elit maecenas nibh.
-    div.card#card-3
-        img()
-        p Save the world by doing nothing.
-        p Lorem ipsum sit amet, consectetur adipiscing elit maecenas nibh.
+section.cards.container
+  +card({
+    title: "Get real time insights with one click.",
+    icon: "data.svg",
+    description: ""
+  })
 
+  +card({
+    title: "Secured and no personal data is stored.",
+    icon: "lock.svg",
+    description: ""
+  })
 
+  +card({
+    title: "Prevent social media impact on the planet.",
+    icon: "lifesaver.svg",
+    description: ""
+  })

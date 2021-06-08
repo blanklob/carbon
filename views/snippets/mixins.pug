@@ -9,3 +9,13 @@ mixin socials(...socials)
       li.header__social__item(class=social.name.toLowerCase())
         a.header__social__link(href=social.link)
           img.header__social__icon(src=social.name.toLowerCase() + ".svg", alt=social.name)
+
+//- Card
+mixin card(card)
+  .card(itemscope, itemtype="https://schema.org/Property")
+    .card__head
+      .card__figure(role="figure" aria-label=card.title + "card icon")
+        img.card__image(src=card.icon || 'default.svg', itemprop="img")
+      h4.card__title= card.title
+
+    p.text-regular.card__body(itemprop="description", role="description")= card.description || 'Lorem ipsum sit amet, consectetur adipiscing elit maecenas nibh.'

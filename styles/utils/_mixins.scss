@@ -27,7 +27,7 @@
   padding: em(12px) em(20px);
   background-color: $white-10;
   border: 1px solid $black-10;
-  border-radius: 10px;
+  border-radius: $border-radius;
   box-shadow: $hard-shadows-small;
   box-sizing: border-box;
 
@@ -42,7 +42,7 @@
   box-sizing: border-box;
   background-color: $green-8;
   border: 1px solid $black-10;
-  border-radius: 10px;
+  border-radius: $border-radius;
   box-shadow: $hard-shadows-normal;
   cursor: pointer;
   transition: background-color .3s ease-in-out;
