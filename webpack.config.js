@@ -16,7 +16,7 @@ const stylesDir = path.join(__dirname, 'styles')
 const assetsDir = path.join(__dirname, 'assets')
 
 // Env variables
-const DEV_ENV = process.env.NODE_ENV || "development"
+const DEV_ENV = process.env.NODE_ENV || "production"
 
 module.exports = {
   // Mode
