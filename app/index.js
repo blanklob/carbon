@@ -3,4 +3,4 @@ import registerServiceWoker from './utils/sw'
 
 
 console.log("Hello Developer.")
-// registerServiceWoker()
+registerServiceWoker()
