@@ -27,7 +27,7 @@ ul {
 h1 {
   @each $bp, $h-size in $headline-h1 {
     @include min($bp) {
-      @include font($h-size, bold, $black-10, -2px)
+      @include font($h-size, 800, $black-10, -2px)
     }
   }
 }
