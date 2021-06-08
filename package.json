@@ -4,9 +4,10 @@
   "author": "Youness Id bakkasse",
   "license": "ISC",
   "scripts": {
-    "dev": "yarn build && webpack serve",
+    "dev": "webpack && webpack serve",
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "serve": "serve ./dist"
   },
   "browserslist": [
     "defaults"
@@ -33,6 +34,8 @@
     "sass-loader": "^11.1.1",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
-  }
+    "webpack-dev-server": "^3.11.2",
+    "workbox-webpack-plugin": "^6.1.5"
+  },
+  "dependencies": {}
 }

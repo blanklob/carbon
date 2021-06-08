@@ -6,6 +6,8 @@ require('dotenv').config()
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
 
 // Directories
 const appDir = path.join(__dirname, 'app')
@@ -42,6 +44,7 @@ module.exports = {
     }),
     // #2: Generate Html files to dist
     new HtmlWebpackPlugin({
+      title: "Homepage",
       filename: "index.html",
       template: path.join(viewsDir, 'index.pug')
     }),
@@ -50,6 +53,10 @@ module.exports = {
       patterns: [
         { from: path.join(assetsDir, 'shared'), to: distDir },
       ],
+    }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
     }),
   ],
 
