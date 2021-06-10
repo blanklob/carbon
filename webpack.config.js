@@ -47,6 +47,16 @@ module.exports = {
       filename: "index.html",
       template: path.join(viewsDir, 'index.pug')
     }),
+    new HtmlWebpackPlugin({
+      title: "Results Page",
+      filename: "results.html",
+      template: path.join(viewsDir, 'results.pug')
+    }),
+    new HtmlWebpackPlugin({
+      title: "404 Page",
+      filename: "404.html",
+      template: path.join(viewsDir, '404.pug')
+    }),
     // #3: Copy images from Assets to Dist
     new CopyPlugin({
       patterns: [
@@ -74,7 +84,13 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env']
+              [
+                '@babel/preset-env',
+                {
+                  useBuiltIns: 'usage',
+                  corejs: 3
+                }
+              ]
             ]
           }
         }
