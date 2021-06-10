@@ -1,0 +1,106 @@
+.presentation {
+  .presentation__title {
+    padding: 30px 0;
+  }
+
+  .presentation__results {
+    margin-bottom: 30px;
+    @include d-flex;
+    @include max(sm) {
+      flex-direction: column;
+    }
+    width: 100%;
+
+    .user__profile {
+      @include d-flex;
+      align-items: center;
+
+      @include max(lg) {
+        .user__img {
+          width: 123px;
+          height: auto;
+        }
+      }
+
+      @include max(lg) {
+        .user__img {
+          width: 85px;
+          height: auto;
+        }
+      }
+
+      .user__infos {
+        margin-left: 40px;
+        @include max(sm) {
+          margin-left: 0px;
+        }
+        .user__identity {
+          .user__fullname {
+            margin-bottom: 10px;
+          }
+
+          .user__name {
+            margin-bottom: 20px;
+            color: $black-4;
+          }
+        }
+
+        .user__stats {
+          @include d-flex;
+          justify-content: flex-start;
+          & > * {
+            margin-right: em(30px);
+          }
+        }
+
+      }
+    }
+
+    .user__score {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .score {
+        margin-bottom: 15px;
+        @include max(sm) {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+        }
+
+        .score__rate {
+          position: relative;
+          margin-top: 5px;
+          margin-right: 40px;
+          @include max(lg) {
+            margin-right: 30px;
+          }
+          @include max(sm) {
+            margin-right: 20px;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            @include max(lg) {
+              right: -30px;
+              width: 20px;
+              height: 20px;
+            }
+            @include max(sm) {
+              right: -20px;
+              width: 15px;
+              height: 15px;
+            }
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            background-color: $red;
+          }
+        }
+      }
+    }
+  }
+}

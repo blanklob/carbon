@@ -1,2 +1,2 @@
-Sitemap: https://carbon.com/sitemap.xml
-Sitemap: http://www.carbon.com/sitemap.xml
+Sitemap: https://carbonproject.netlify.app/sitemap.xml
+Sitemap: http://carbonproject.netlify.app/sitemap.xml
