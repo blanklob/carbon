@@ -2,6 +2,7 @@ import 'Styles/index.scss'
 import Preloader from './components/preloader'
 import './data/dataVisualisation'
 import fetchData from './data/getData'
+import registerServiceWoker from './utils/sw'
 
 
 class App {
@@ -12,7 +13,7 @@ class App {
 
 // new App()
 
-
+registerServiceWoker()
 
 // Routage basique
 document.querySelectorAll('.search__btn').forEach( item => {
