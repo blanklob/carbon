@@ -10,12 +10,18 @@ $black-4: #2b2b2b;
 $white-10: #FFFFFF;
 $white-8: #FBFBFB;
 
+// Other colors
+$orange: #EABB75;
+$red: #EA7575;
+$yellow: #D9EA75;
+
 // Typefaces
 $p-font: "Montserrat", sans-serif;
 
 $headline-h1: (na: 34px, sm: 56px, md: 66px, lg: 80px);
 $headline-h2: (na: 22px, sm: 28px, lg: 36px);
-$headline-h4: (na: 18px, sm: 20px, lg: 20px);
+$headline-h3: (na: 18px,sm: 22px, lg: 30px);
+$headline-h4: (na: 16px, sm: 20px, lg: 20px);
 
 $text-big: (na: 14px, sm: 16px, lg: 22px);
 $text-regular: (na: 12px, sm: 14px, lg: 18px);

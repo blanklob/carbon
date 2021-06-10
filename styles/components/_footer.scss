@@ -1,7 +1,7 @@
 .footer-container{
   @include d-flex($wrap: nowrap);
   align-items: center;
-  padding-bottom: em(30px);
+  padding-bottom: em(20px);
 
 
   .footer__navigation__list{

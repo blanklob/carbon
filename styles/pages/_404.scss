@@ -1,0 +1,14 @@
+.error {
+  text-align: center;
+  @include d-flex($direction: column, $align: center);
+  height: 80vh;
+  .error__wrapper {
+    padding: 30px 20px 60px;
+    & > * {
+      padding-bottom: 30px;
+    }
+  }
+  .error__btn {
+    @include button;
+  }
+}

@@ -40,6 +40,14 @@ h2 {
   }
 }
 
+h3 {
+  @each $bp, $h-size in $headline-h3 {
+    @include min($bp) {
+      @include font($h-size, bold, $black-10, .5px)
+    }
+  }
+}
+
 h4 {
   @each $bp, $h-size in $headline-h4 {
     @include min($bp) {
