@@ -57,6 +57,16 @@ module.exports = {
       filename: "404.html",
       template: path.join(viewsDir, '404.pug')
     }),
+    new HtmlWebpackPlugin({
+      title: "About Page",
+      filename: "about.html",
+      template: path.join(viewsDir, 'about.pug')
+    }),
+    new HtmlWebpackPlugin({
+      title: "Privacy Page",
+      filename: "privacy.html",
+      template: path.join(viewsDir, 'privacy.pug')
+    }),
     // #3: Copy images from Assets to Dist
     new CopyPlugin({
       patterns: [

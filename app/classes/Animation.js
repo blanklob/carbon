@@ -1,6 +1,3 @@
-import { gsap as animate } from 'gsap'
-
-
 export default class Animation {
   constructor(element, duration) {
     this.element = element
@@ -9,7 +6,7 @@ export default class Animation {
   }
 
   showElement() {
-    animate.to(this.element, {
+    gsap.to(this.element, {
       duration: this.duration,
       opacity: 100
     })

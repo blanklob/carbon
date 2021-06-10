@@ -1,5 +1,4 @@
 import Component from '../classes/Component'
-import { gsap as animate } from 'gsap'
 
 export default class extends Component {
   constructor (element) {
@@ -8,7 +7,7 @@ export default class extends Component {
   }
 
   changeOpacity() {
-    animate.to(this.element, {
+    gsap.to(this.element, {
       duration: 2,
       opacity: 0,
       onComplete: () => {

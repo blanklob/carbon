@@ -9,10 +9,10 @@ html(lang="en" class="no-js")
     script(src="https://d3js.org/d3.v6.min.js" defer)
 
   body
-    include ./partials/preloader
+    //- include ./partials/preloader
     include ./sections/header
-    main#main(role="main", style="display: none")
-      include ./partials/noscript
+    main#main(role="main")
       include ./sections/presentation
       include ./sections/dashboards
-      include ./sections/footer
+    include ./partials/noscript
+    include ./sections/footer

@@ -2,8 +2,8 @@
   {
     "fullname": "Youness Id bakkasse",
     "username": "yidbakkasse",
-    "pollution quantity": 24,
-    "pollution unit": "grammes",
+    "pollution": 24,
+    "pollutionNote": "Bad",
     "text": 32,
     "video": 18,
     "images": 60
