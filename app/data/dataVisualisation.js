@@ -1,13 +1,12 @@
 console.log('Datavisualisation script starts here.')
 
-const w = 300
-const h = 300
+const w = 270
+const h = 270
 
 // Graph I: By type
-
 const datasetByType = [
-  {"type": "InDirect", "percentage": 40},
-  {"type": "Direct", "percentage": 60}
+  {"type": "InDirect", "percentage": 60},
+  {"type": "Direct", "percentage": 40}
 ]
 
 const svgByType = d3.select(".dashboard__bytype")
@@ -27,7 +26,7 @@ const dynamiqueCircle = svgByType.append("circle")
   .data(datasetByType)
   .attr("cx", w/2)
   .attr("cy", d => {
-    return (h - d.percentage/100 * h/2)-2
+    return (h - d.percentage/100 * h/2) - 2
   })
   .attr("r", d => {
     return (d.percentage/100 * h/2) - 1
@@ -45,9 +44,9 @@ const text = svgByType.selectAll('text')
   .attr('x', w/2 - 16)
   .attr('y', d => {
     if (d.type == "Direct") {
-      return (d.percentage/100 * h/2)
+      return h/2 - (d.percentage/100 * h/2)
     } else {
-      return h - (d.percentage/100 * h/2)
+      return h+5 - (d.percentage/100 * h/2)
     }
   })
 
