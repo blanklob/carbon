@@ -1,7 +1,7 @@
 console.log('Datavisualisation script starts here.')
 
-const w = 270
-const h = 270
+const w = 280
+const h = 280
 
 // Graph I: By type
 const datasetByType = [
