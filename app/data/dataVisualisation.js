@@ -52,18 +52,14 @@ const text = svgByType.selectAll('text')
 
 
 // Graph II: By source
-const width = 450
-const height = 450
-const margin = 40
-
 const svgBySource = d3.select(".dashboard__bysource")
                   .append("svg")
-                  .attr("width", width)
-                  .attr("height", height)
+                  .attr("width", w)
+                  .attr("height", h)
                   .append("g")
-                  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+                  .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
-var radius = Math.min(width, height) / 2 - margin
+var radius = Math.min(w, h) / 2 - 40
 
 const datasetBySource = [ 64, 9, 27 ]
 
@@ -73,6 +69,7 @@ var color = d3.scaleOrdinal()
 
 var pie = d3.pie()
   .value(function(d) {return d.value; })
+
 var data_ready = pie(d3.entries(datasetByType))
 
 var arcGenerator = d3.arc()
