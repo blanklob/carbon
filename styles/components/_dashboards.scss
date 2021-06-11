@@ -10,7 +10,9 @@
     box-shadow: $hard-shadows-normal;
     margin: 50px 0;
 
-    .dashboard__bytype {
+    .dashboard__bytype,
+    .dashboard__bysource,
+    .dashboard__dialypollution {
       margin: 50px 0;
     }
   }

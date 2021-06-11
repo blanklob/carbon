@@ -3,7 +3,7 @@ console.log('Datavisualisation script starts here.')
 const w = 300
 const h = 300
 
-// Graph II: by type
+// Graph I: By type
 
 const datasetByType = [
   {"type": "InDirect", "percentage": 40},
@@ -52,10 +52,18 @@ const text = svgByType.selectAll('text')
   })
 
 
-// Graph II: by source
+// Graph II: By source
 const svgBySource = d3.select(".dashboard__bysource")
                   .append("svg")
                   .attr("width", w)
                   .attr("height", h)
+
+
+// Graph III: Dialy Twitter
+const svgDialyPollution = d3.select(".dashboard__dialypollution")
+                  .append("svg")
+                  .attr("width", w)
+                  .attr("height", h)
+
 
 
