@@ -22,6 +22,14 @@
     }
   }
 
+  .chart-data:hover {
+    transform: scale(1.05);
+  }
+  .chart-data {
+    transition: all 1s;
+    transform-origin: 50% 50%;
+  }
+
   .dashboard-frame {
     display: flex;
     flex-direction: column;
