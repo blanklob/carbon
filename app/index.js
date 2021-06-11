@@ -19,7 +19,7 @@ registerServiceWoker()
 document.querySelectorAll('.search__btn').forEach( item => {
   item.addEventListener('click', e => {
     // <Preloader hook>
-    window.location.href = "/results.html"
+    window.location.href = "/results"
   })
 })
 
