@@ -1,0 +1,17 @@
+.dashboards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: em(30px);
+  .dashboard-frame {
+    background-color: $white-10;
+    padding: 40px;
+    border: 2px solid $black-10;
+    border-radius: $border-radius;
+    box-shadow: $hard-shadows-normal;
+    margin: 50px 0;
+
+    .dashboard__bytype {
+      margin: 50px 0;
+    }
+  }
+}

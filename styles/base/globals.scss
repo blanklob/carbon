@@ -25,7 +25,7 @@ ul {
 }
 
 
-h1 {
+h1, .headline-h1 {
   @each $bp, $h-size in $headline-h1 {
     @include min($bp) {
       @include font($h-size, 800, $black-10, -2px)
@@ -33,7 +33,7 @@ h1 {
   }
 }
 
-h2 {
+h2, .headline-h2 {
   @each $bp, $h-size in $headline-h2 {
     @include min($bp) {
       @include font($h-size, 800, $black-10, -1px)
@@ -41,7 +41,7 @@ h2 {
   }
 }
 
-h3 {
+h3, .headline-h3 {
   @each $bp, $h-size in $headline-h3 {
     @include min($bp) {
       @include font($h-size, bold, $black-10, .5px)
@@ -49,7 +49,7 @@ h3 {
   }
 }
 
-h4 {
+h4, .headline-h4 {
   @each $bp, $h-size in $headline-h4 {
     @include min($bp) {
       @include font($h-size, bold, $black-10, .5px)

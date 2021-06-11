@@ -12,8 +12,6 @@ class App {
 
 // new App()
 
-
-
 // Routage basique
 document.querySelectorAll('.search__btn').forEach( item => {
   item.addEventListener('click', e => {

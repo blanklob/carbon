@@ -1,2 +1,21 @@
 section.dashboards.container
-  //- include ../components/dashboard1
+  .dashboard-frame
+    h4.dashboard__title Daily Twitter pollution
+    .dashboard__canvas
+      include ../components/dialypollution
+    ul.dashboard__labels
+      li.label
+  .dashboard-frame
+    h4.dashboard__title Posts pollution by type
+    .dashboard__canvas
+      include ../components/bytype
+    ul.dashboard__labels
+      li.label
+  .dashboard-frame
+    h4.dashboard__title Posts pollution by source
+    .dashboard__canvas
+      include ../components/bysource
+    ul.dashboard__labels
+      li.label
+
+
