@@ -5,8 +5,8 @@ const h = 280
 
 // Graph I: By type
 const datasetByType = [
-  {"type": "InDirect", "percentage": 60},
-  {"type": "Direct", "percentage": 40}
+  {"type": "Indirect", "percentage": 30},
+  {"type": "Direct", "percentage": 70}
 ]
 
 const svgByType = d3.select(".dashboard__bytype")
@@ -26,10 +26,10 @@ const dynamiqueCircle = svgByType.append("circle")
   .data(datasetByType)
   .attr("cx", w/2)
   .attr("cy", d => {
-    return (h - d.percentage/100 * h/2) - 2
+    return h - Math.sqrt((d.percentage/100 * w/2 * w/2))
   })
   .attr("r", d => {
-    return (d.percentage/100 * h/2) - 1
+    return Math.sqrt((d.percentage/100 * w/2 * w/2)) - 1
   })
   .attr('fill', '#D9EA75')
   .attr('stroke', '#000000')
@@ -43,62 +43,24 @@ const text = svgByType.selectAll('text')
   .attr('class', 'headline-h4')
   .attr('x', w/2 - 16)
   .attr('y', d => {
-    if (d.type == "Direct") {
-      return h/2 - (d.percentage/100 * h/2)
+    if (d.type == "Indirect") {
+      return h - Math.sqrt((d.percentage/100 * w/2 * w/2)) + 6
+    } else if (d.type == "Direct") {
+      return (1 - d.percentage/100) * h
     } else {
-      return h+5 - (d.percentage/100 * h/2)
+      console.error("Type Error")
     }
   })
 
 
 // Graph II: By source
+const datasetBySource = [ 64, 9, 27 ]
+
 const svgBySource = d3.select(".dashboard__bysource")
                   .append("svg")
                   .attr("width", w)
                   .attr("height", h)
-                  .append("g")
-                  .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
-var radius = Math.min(w, h) / 2 - 40
-
-const datasetBySource = [ 64, 9, 27 ]
-
-var color = d3.scaleOrdinal()
-    .domain(datasetByType)
-    .range(['#3EC865', '#D9EA75', '#EABB75']);
-
-var pie = d3.pie()
-  .value(function(d) {return d.value; })
-
-var data_ready = pie(d3.entries(datasetByType))
-
-var arcGenerator = d3.arc()
-  .innerRadius(0)
-  .outerRadius(radius)
-  .startAngle(function(d) { return d.startAngle + Math.PI; })
-  .endAngle(function(d) { return d.endAngle + Math.PI; });
-
-svgBySource
-  .selectAll('mySlices')
-  .data(data_ready)
-  .enter()
-  .append('path')
-    .attr('d', arcGenerator)
-    .attr('fill', function(d){ return(color(d.data.key)) })
-    .attr('class', 'chart-data')
-    .attr("stroke", "black")
-    .style("stroke-width", "2px")
-    .style("opacity", 0.7)
-
-svgBySource
-  .selectAll('mySlices')
-  .data(data_ready)
-  .enter()
-  .append('text')
-  .text(function(d){ return d.value + '%'})
-  .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-  .style("text-anchor", "middle")
-  .style("font-size", 17)
 
 // Graph III: Dialy Twitter
 const svgDialyPollution = d3.select(".dashboard__dialypollution")

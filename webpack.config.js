@@ -16,6 +16,7 @@ const nodeDir = path.join(__dirname, 'node_modules')
 const viewsDir = path.join(__dirname, 'views')
 const stylesDir = path.join(__dirname, 'styles')
 const assetsDir = path.join(__dirname, 'assets')
+const pagesDir = path.join(viewsDir, 'pages')
 
 // Env variables
 const DEV_ENV = process.env.NODE_ENV || "production"
@@ -45,27 +46,27 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Homepage",
       filename: "index.html",
-      template: path.join(viewsDir, 'index.pug')
+      template: path.join(pagesDir, 'index.pug')
     }),
     new HtmlWebpackPlugin({
       title: "Results Page",
       filename: "results.html",
-      template: path.join(viewsDir, 'results.pug')
+      template: path.join(pagesDir, 'results.pug')
     }),
     new HtmlWebpackPlugin({
       title: "404 Page",
       filename: "404.html",
-      template: path.join(viewsDir, '404.pug')
+      template: path.join(pagesDir, '404.pug')
     }),
     new HtmlWebpackPlugin({
       title: "About Page",
       filename: "about.html",
-      template: path.join(viewsDir, 'about.pug')
+      template: path.join(pagesDir, 'about.pug')
     }),
     new HtmlWebpackPlugin({
       title: "Privacy Page",
       filename: "privacy.html",
-      template: path.join(viewsDir, 'privacy.pug')
+      template: path.join(pagesDir, 'privacy.pug')
     }),
     // #3: Copy images from Assets to Dist
     new CopyPlugin({

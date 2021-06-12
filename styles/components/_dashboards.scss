@@ -70,7 +70,6 @@
     .dashboard__text {
       @include d-flex($direction: column);
       margin: auto;
-      max-width: 90%;
 
       .dashboard__label {
         position: relative;
