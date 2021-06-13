@@ -52,56 +52,39 @@ const text = svgByType.selectAll('text')
 
 
 // Graph II: By source
-const width = 450
-const height = 450
-const margin = 40
+const datasetBySource=[{percentage:64 ,color:"#3EC865"},
+                      {percentage:10 ,color:"#EABB75"},
+                      {percentage:26  ,color:"#D9EA75"}];
 
 const svgBySource = d3.select(".dashboard__bysource")
-                  .append("svg")
-                  .attr("width", width)
-                  .attr("height", height)
-                  .append("g")
-                  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+                      .append("svg")
+                      .attr("width",w)
+                      .attr("height",h)
+const pie_chart = d3.pie().value(function(d){return d.percentage;})(datasetBySource);
 
-var radius = Math.min(width, height) / 2 - margin
+const segments = d3.arc()
+                   .innerRadius(0)
+                   .outerRadius(h/2 -1)
+                   .padAngle(.05)
+                   .padRadius(10);
 
-const datasetBySource = [ 64, 9, 27 ]
+const parts = svgBySource.append("g").attr("transform","translate(" + w/2 +"," + h/2 +")")
+                         .selectAll("path").data(pie_chart);
+parts.enter().append("path")
+             .attr("d", segments)
+             .attr('stroke','#000000')
+             .attr('stroke-width','2px')
+             .attr('fill',d => d.data.color)
 
-var color = d3.scaleOrdinal()
-    .domain(datasetByType)
-    .range(['#3EC865', '#D9EA75', '#EABB75']);
-
-var pie = d3.pie()
-  .value(function(d) {return d.value; })
-var data_ready = pie(d3.entries(datasetByType))
-
-var arcGenerator = d3.arc()
-  .innerRadius(0)
-  .outerRadius(radius)
-  .startAngle(function(d) { return d.startAngle + Math.PI; })
-  .endAngle(function(d) { return d.endAngle + Math.PI; });
-
-svgBySource
-  .selectAll('mySlices')
-  .data(data_ready)
-  .enter()
-  .append('path')
-    .attr('d', arcGenerator)
-    .attr('fill', function(d){ return(color(d.data.key)) })
-    .attr('class', 'chart-data')
-    .attr("stroke", "black")
-    .style("stroke-width", "2px")
-    .style("opacity", 0.7)
-
-svgBySource
-  .selectAll('mySlices')
-  .data(data_ready)
-  .enter()
-  .append('text')
-  .text(function(d){ return d.value + '%'})
-  .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-  .style("text-anchor", "middle")
-  .style("font-size", 17)
+const indice = d3.select("g")
+                 .selectAll("text").data(pie_chart);
+indice.enter().append("text").each(function(d){
+const center = segments.centroid(d);
+d3.select(this).attr("x",center[0]).attr("y",center[1])
+               .attr("text-anchor", "middle")
+               .attr('class', 'headline-h4')
+               .text(d.data.percentage + "%");
+});
 
 // Graph III: Dialy Twitter
 const svgDialyPollution = d3.select(".dashboard__dialypollution")
