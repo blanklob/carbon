@@ -37,7 +37,7 @@
 }
 
 @mixin button($h-padding: 30px) {
-  @include font($size: 14px, $weight: bold, $color: $white-10);
+  @include font($size: 14px, $weight: bold, $color: $black-10);
   padding: 14px em($h-padding);
   box-sizing: border-box;
   background-color: $green-8;

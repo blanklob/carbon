@@ -14,7 +14,7 @@ mixin socials(...socials)
 mixin card(card)
   .card(itemscope, itemtype="https://schema.org/Property")
     .card__head
-      .card__figure(role="figure" aria-label=card.title + "card icon")
+      .card__figure(aria-label=card.title + "card icon")
         img.card__image(src=card.icon || 'default.svg', itemprop="img")
       h4.card__title= card.title
 
