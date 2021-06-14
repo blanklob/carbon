@@ -122,17 +122,17 @@ let Gauge = function () {
         {
           tick: colorRange * 0,
           color: '#3EC865',
-          note: 'Thank you 😍'
+          note: 'Thank you 😍',
         },
         {
           tick: colorRange * 2,
           color: '#D9EA75',
-          note: 'You are doing okay 👍'
+          note: 'You are doing okay 👍',
         },
         {
           tick: colorRange * 3,
           color: '#EA7575',
-          note: 'You need to stop NOW 🤬'
+          note: 'You need to stop NOW 🤬',
         },
       ]
       let color, note
@@ -145,7 +145,7 @@ let Gauge = function () {
       })
       return {
         color,
-        note
+        note,
       }
     },
   }
@@ -159,20 +159,19 @@ let Gauge = function () {
   }
 
   function render(value) {
-    arc = d3.arc()
-    .innerRadius(w / 2 - 41)
-    .outerRadius(w / 2 - 1)
-    .startAngle(deg2rad(-120))
+    arc = d3
+      .arc()
+      .innerRadius(w / 2 - 41)
+      .outerRadius(w / 2 - 1)
+      .startAngle(deg2rad(-120))
 
-    svg = d3.select('.dashboard__dialypollution')
+    svg = d3
+      .select('.dashboard__dialypollution')
       .append('svg')
       .attr('width', w)
       .attr('height', h)
       .append('g')
-      .attr(
-        'transform',
-        'translate(' + w / 2 + ',' + w / 2 + ')'
-      )
+      .attr('transform', 'translate(' + w / 2 + ',' + w / 2 + ')')
 
     // Append background arc to svg
     var background = svg
@@ -248,13 +247,11 @@ let Gauge = function () {
   update(0)
 
   return {
-    update
+    update,
   }
 }
 
 let gauge = new Gauge()
 gauge.update(80)
 
-export {
-  gauge
-}
+export { gauge }
