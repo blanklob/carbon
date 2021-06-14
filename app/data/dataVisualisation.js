@@ -15,7 +15,7 @@ const svgByType = d3
   .attr('width', w)
   .attr('height', h)
 
-const staticCircle = svgByType
+svgByType
   .append('circle')
   .attr('cx', w / 2)
   .attr('cy', h / 2)
@@ -24,7 +24,7 @@ const staticCircle = svgByType
   .attr('stroke', '#000000')
   .attr('stroke-width', '2px')
 
-const dynamiqueCircle = svgByType
+svgByType
   .append('circle')
   .data(datasetByType)
   .attr('cx', w / 2)
@@ -38,7 +38,7 @@ const dynamiqueCircle = svgByType
   .attr('stroke', '#000000')
   .attr('stroke-width', '2px')
 
-const text = svgByType
+svgByType
   .selectAll('text')
   .data(datasetByType)
   .enter()
@@ -109,8 +109,152 @@ indice
   })
 
 // Graph III: Dialy Twitter
-const svgDialyPollution = d3
-  .select('.dashboard__dialypollution')
-  .append('svg')
-  .attr('width', w)
-  .attr('height', h)
+let Gauge = function () {
+  let config = {
+    minValue: 0,
+    maxValue: 100,
+    transitionMs: 750,
+
+    arcColorFn: function (value) {
+      let ncolors = 5
+      let colorRange = (this.maxValue - this.minValue) / ncolors
+      let ticks = [
+        {
+          tick: colorRange * 0,
+          color: '#3EC865',
+          note: 'Thank you 😍'
+        },
+        {
+          tick: colorRange * 2,
+          color: '#D9EA75',
+          note: 'You are doing okay 👍'
+        },
+        {
+          tick: colorRange * 3,
+          color: '#EA7575',
+          note: 'You need to stop NOW 🤬'
+        },
+      ]
+      let color, note
+      ticks.forEach(function (tick) {
+        if (value > tick.tick) {
+          color = tick.color
+          note = tick.note
+          return
+        }
+      })
+      return {
+        color,
+        note
+      }
+    },
+  }
+
+  let foreground, arc, svg, current
+  let cur_color, note
+  let new_color, hold, new_note
+
+  function deg2rad(deg) {
+    return (deg * Math.PI) / 180
+  }
+
+  function render(value) {
+    arc = d3.arc()
+    .innerRadius(w / 2 - 41)
+    .outerRadius(w / 2 - 1)
+    .startAngle(deg2rad(-120))
+
+    svg = d3.select('.dashboard__dialypollution')
+      .append('svg')
+      .attr('width', w)
+      .attr('height', h)
+      .append('g')
+      .attr(
+        'transform',
+        'translate(' + w / 2 + ',' + w / 2 + ')'
+      )
+
+    // Append background arc to svg
+    var background = svg
+      .append('path')
+      .datum({
+        endAngle: deg2rad(120),
+      })
+      .attr('fill', '#555555')
+      .attr('d', arc)
+
+    // Append foreground arc to svg
+    foreground = svg
+      .append('path')
+      .datum({
+        endAngle: deg2rad(-120),
+      })
+      .style('fill', cur_color)
+      .attr('stroke', '#000000')
+      .attr('stroke-width', '2px')
+      .attr('d', arc)
+
+    // Display Current value
+    current = svg
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .attr('class', 'headline-h4')
+
+    note = svg
+      .append('text')
+      .attr('transform', 'translate(0 120)')
+      .attr('text-anchor', 'middle')
+      .attr('class', 'text-regular')
+  }
+
+  function update(value) {
+    // Get new color
+    new_color = config.arcColorFn(value).color
+    new_note = config.arcColorFn(value).note
+
+    let numPi = deg2rad(Math.floor((value * 240) / config.maxValue - 120))
+
+    // Display Current value
+    current.transition().text(value + 'gCO2')
+    note.transition().text(new_note)
+
+    // Arc Transition
+    foreground
+      .transition()
+      .duration(config.transitionMs)
+      .styleTween('fill', function () {
+        return d3.interpolate(new_color, cur_color)
+      })
+      .call(arcTween, numPi)
+
+    // Set colors for next transition
+    hold = cur_color
+    cur_color = new_color
+    new_color = hold
+  }
+
+  // Update animation
+  function arcTween(transition, newAngle) {
+    transition.attrTween('d', function (d) {
+      var interpolate = d3.interpolate(d.endAngle, newAngle)
+      return function (t) {
+        d.endAngle = interpolate(t)
+        return arc(d)
+      }
+    })
+  }
+
+  render()
+  update(0)
+
+  return {
+    update
+  }
+}
+
+let gauge = new Gauge()
+gauge.update(80)
+
+export {
+  gauge
+}

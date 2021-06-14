@@ -4,7 +4,7 @@
   "author": "Youness Id bakkasse",
   "license": "ISC",
   "scripts": {
-    "dev": "webpack && webpack serve",
+    "dev": "webpack serve",
     "build": "webpack",
     "watch": "webpack --watch",
     "serve": "serve ./dist",

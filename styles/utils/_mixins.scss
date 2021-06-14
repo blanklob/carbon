@@ -76,7 +76,7 @@
   @each $bp, $bp-size in $breakpoints {
     @include min($bp) {
       width: 95%;
-      max-width: $bp-size;
+      max-width: $bp-size + 20px;
     }
   }
 }
