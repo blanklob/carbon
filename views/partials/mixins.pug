@@ -18,4 +18,4 @@ mixin card(card)
         img.card__image(src=card.icon itemprop="img" alt=card.title width="52" height="52")
       h4.card__title= card.title
 
-    p.text-regular.card__body(itemprop="description", role="description")= card.description || 'Lorem ipsum sit amet, consectetur adipiscing elit maecenas nibh.'
+    p.text-regular.card__body(itemprop="description")= card.description || 'Lorem ipsum sit amet, consectetur adipiscing elit maecenas nibh.'
