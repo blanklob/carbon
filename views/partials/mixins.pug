@@ -8,14 +8,14 @@ mixin socials(...socials)
     each social in socials
       li.header__social__item(class=social.name.toLowerCase())
         a.header__social__link(href=social.link)
-          img.header__social__icon(src=social.name.toLowerCase() + ".svg", alt=social.name)
+          img.header__social__icon(src=social.name.toLowerCase() + ".svg", alt=social.name, width='15', height='15')
 
 //- Card
 mixin card(card)
   .card(itemscope, itemtype="https://schema.org/Property")
     .card__head
       .card__figure(aria-label=card.title + "card icon")
-        img.card__image(src=card.icon || 'default.svg', itemprop="img")
+        img.card__image(src=card.icon itemprop="img" alt=card.title width="52" height="52")
       h4.card__title= card.title
 
     p.text-regular.card__body(itemprop="description", role="description")= card.description || 'Lorem ipsum sit amet, consectetur adipiscing elit maecenas nibh.'
