@@ -1,11 +1,4 @@
-import Preloader from './components/preloader'
 import registerServiceWoker from './utils/sw'
-
-class App {
-  constructor() {
-    this.preloader = new Preloader('.preloader')
-  }
-}
 
 registerServiceWoker()
 

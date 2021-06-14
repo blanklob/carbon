@@ -40,6 +40,7 @@
     "workbox-webpack-plugin": "^6.1.5"
   },
   "dependencies": {
-    "core-js": "^3.14.0"
+    "core-js": "^3.14.0",
+    "d3": "^7.0.0"
   }
 }

@@ -1,4 +1,4 @@
-console.log('Datavisualisation script starts here.')
+import * as d3 from 'd3'
 
 const w = 280
 const h = 280
