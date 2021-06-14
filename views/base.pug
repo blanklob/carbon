@@ -1,0 +1,23 @@
+//- Including utils
+include partials/mixins
+
+//- Main Document
+doctype html
+html(lang="en")
+  head
+    include partials/head
+    block title
+    include partials/meta
+    include partials/icons
+    include partials/fonts
+    include partials/socialshare
+    block scripts
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js")
+
+  body
+    block header
+    main#main(role="main")
+      block content
+    include sections/footer
+    include partials/noscript
+
