@@ -26,7 +26,9 @@ module.exports = {
   mode: DEV_ENV,
   // Entry
   entry: {
-      app: path.join(appDir, 'index.js'),
+      index: [path.join(appDir, 'index.js'), path.join(stylesDir, 'pages/index.scss')],
+      results: [path.join(appDir, 'results.js'), path.join(stylesDir, 'pages/results.scss')],
+      about: [path.join(appDir, 'about.js'), path.join(stylesDir, 'pages/about.scss')]
   },
 
   // Output
@@ -44,29 +46,29 @@ module.exports = {
     }),
     // #2: Generate Html files to dist
     new HtmlWebpackPlugin({
-      title: "Homepage",
       filename: "index.html",
-      template: path.join(pagesDir, 'index.pug')
+      template: path.join(pagesDir, 'index.pug'),
+      chunks: ['index']
     }),
     new HtmlWebpackPlugin({
-      title: "Results Page",
       filename: "results.html",
-      template: path.join(pagesDir, 'results.pug')
+      template: path.join(pagesDir, 'results.pug'),
+      chunks: ['results']
     }),
     new HtmlWebpackPlugin({
-      title: "404 Page",
       filename: "404.html",
-      template: path.join(pagesDir, '404.pug')
+      template: path.join(pagesDir, '404.pug'),
+      chunks: ['about']
     }),
     new HtmlWebpackPlugin({
-      title: "About Page",
       filename: "about.html",
-      template: path.join(pagesDir, 'about.pug')
+      template: path.join(pagesDir, 'about.pug'),
+      chunks: ['about']
     }),
     new HtmlWebpackPlugin({
-      title: "Privacy Page",
       filename: "privacy.html",
-      template: path.join(pagesDir, 'privacy.pug')
+      template: path.join(pagesDir, 'privacy.pug'),
+      chunks: ['about']
     }),
     // #3: Copy images from Assets to Dist
     new CopyPlugin({

@@ -8,7 +8,7 @@ export default class Animation {
   showElement() {
     gsap.to(this.element, {
       duration: this.duration,
-      opacity: 100
+      opacity: 100,
     })
   }
 }

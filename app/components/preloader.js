@@ -1,7 +1,7 @@
 import Component from '../classes/Component'
 
 export default class extends Component {
-  constructor (element) {
+  constructor(element) {
     super(element)
     this.changeOpacity()
   }
@@ -12,8 +12,8 @@ export default class extends Component {
       opacity: 0,
       onComplete: () => {
         this.element.remove()
-        document.getElementById('main').style.display="block"
-      }
+        document.getElementById('main').style.display = 'block'
+      },
     })
   }
 }
