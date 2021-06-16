@@ -27,7 +27,10 @@ export default class Presentation {
     this.element.followers.innerHTML = data.followers
     this.element.following.innerHTML = data.following
     this.element.score.innerHTML = data.score
-    this.element.score.style.setProperty('--background', this.rate(data.score)[1])
+    this.element.score.style.setProperty(
+      '--background',
+      this.rate(data.score)[1]
+    )
     this.element.note.innerHTML = this.rate(data.score)[0]
     this.element.image.src = data.imageUrl
   }
