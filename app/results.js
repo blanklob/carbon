@@ -9,7 +9,7 @@ import Router from "App/classes/router"
 import fetchData from 'App/data/getData'
 
 
-const data = fetchData(localStorage.getItem('username'))``
+const data = fetchData(localStorage.getItem('username'))
 .then(data => {
   let profile = data.dataTwitter[0]
   new Presentation().update({
