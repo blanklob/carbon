@@ -1,9 +1,9 @@
 export default class Router {
   constructor(selector, newRoute) {
     this.btns = document.querySelectorAll(selector)
-    this.btns.forEach( item => {
+    this.btns.forEach((item) => {
       item.addEventListener('click', (e) => {
-        window.location.href = newRoute
+        window.location.href = newRoute + '.html'
       })
     })
   }

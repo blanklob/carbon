@@ -22,7 +22,7 @@ export default class Presentation {
   }
 
   update(data) {
-    this.element.username.innerHTML = '@' + data.username
+    this.element.username.innerHTML = data.username
     this.element.fullname.innerHTML = data.fullname
     this.element.followers.innerHTML = data.followers
     this.element.following.innerHTML = data.following

@@ -1,27 +1,41 @@
 import {
   GraphByType,
   GraphByScore,
-  GraphBySource
+  GraphBySource,
+  GraphByComparator
 } from 'App/data/dashboards'
 import Presentation from 'App/components/presentation'
 import Router from "App/classes/router"
-import registerServiceWoker from 'App/utils/sw'
+import fetchData from 'App/data/getData'
 
 
-registerServiceWoker()
-
-
-new GraphByType('.dashboard__bytype').update(30)
-new GraphByScore('.dashboard__byscore').update(80)
-new GraphBySource('.dashboard__bysource').update({green: 30, yellow: 30, red: 40})
-
-new Presentation().update({
-  username: 'younessidbakkasse',
-  fullname: 'Youness Id bakkasse',
-  followers: 340,
-  following: 10,
-  score: 80,
-  imageUrl: 'https://images.unsplash.com/photo-1623475049193-0fe057ab80a4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2897&q=80'
+const data = fetchData(localStorage.getItem('username'))``
+.then(data => {
+  let profile = data.dataTwitter[0]
+  new Presentation().update({
+    username: profile.surname,
+    fullname: profile.name,
+    followers: profile.followers,
+    following: profile.following,
+    score: 80,
+    imageUrl: profile.profilPicUrl
+  })
 })
+
+
+new GraphByType('.dashboard__bytype').update(90)
+new GraphByScore('.dashboard__byscore').update(10)
+new GraphBySource('.dashboard__bysource').update({green: 10, yellow: 30, red: 60})
+
+new GraphByComparator('.dashboard__bycomparator').render([
+  {person: 'You', value: 30},
+  {person: 'Elon', value: 60},
+  {person: 'Bezos', value: 90},
+  {person: 'Macron', value: 120},
+  {person: 'Emmanuel Macron', value: 160}
+])
+
+
+
 
 new Router('.header__cta-btn', '/')

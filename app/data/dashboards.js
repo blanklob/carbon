@@ -42,7 +42,8 @@ class GraphByType {
 
     this.text = this.svg
       .append('text')
-      .attr('x', settings.RADIUS - 15)
+      .attr('x', settings.RADIUS)
+      .attr('text-anchor', 'middle')
       .attr('class', 'headline-h4')
       .style('opacity', 0)
   }
@@ -140,7 +141,7 @@ class GraphByScore {
     let valToColor = this.color(val),
       hold
 
-    this.text.transition().text(val + 'gCO2')
+    this.text.transition().text(val + 'geqCO2')
 
     hold = this.curColor
     this.curColor = valToColor
@@ -188,16 +189,18 @@ class GraphBySource {
       return d.percentage
     })(this.data)
 
-    this.segment = d3
+    const arcGenerator = d3
       .arc()
       .innerRadius(0)
       .outerRadius(settings.RADIUS - settings.STROKE / 2)
       .padAngle(0)
       .padRadius(10)
 
-    this.svg
+    const parts = this.svg
       .append('g')
       .attr('transform', `translate(${settings.RADIUS},${settings.RADIUS})`)
+
+    parts
       .selectAll('path')
       .data(pie)
       .enter()
@@ -205,8 +208,80 @@ class GraphBySource {
       .attr('stroke', colors.black)
       .attr('stroke-width', settings.STROKE)
       .attr('fill', (d) => d.data.color)
-      .attr('d', this.segment)
+      .attr('d', arcGenerator)
+
+    parts
+      .append('g')
+      .selectAll('text')
+      .data(pie)
+      .enter()
+      .append('text')
+      .each(function (d) {
+        var centroid = arcGenerator.centroid(d)
+        d3.select(this)
+          .attr('x', centroid[0])
+          .attr('y', centroid[1])
+          .attr('class', 'headline-h4')
+          .attr('text-anchor', 'middle')
+          .text(d.data.percentage + '%')
+      })
   }
 }
 
-export { GraphByType, GraphByScore, GraphBySource }
+class GraphByComparator {
+  constructor(el) {
+    this.element = document.querySelector(el)
+    this.width = settings.DIAMETRE * 4
+    this.height = settings.DIAMETRE * 2
+    this.animation = {
+      duration: 800,
+    }
+    this.svg = d3
+      .select(this.element)
+      .append('svg')
+      .attr('width', this.width)
+      .attr('height', this.height)
+  }
+
+  render(data) {
+    this.svg
+      .append('g')
+      .attr('transform', `translate(80, -40)`)
+      .selectAll('rect')
+      .data(data)
+      .enter()
+      .append('rect')
+      .attr('x', (d, i) => i * 230)
+      .attr('y', (d) => this.height - d.value * 3)
+      .attr('width', 80)
+      .attr('height', 0)
+      .attr('rx', '10')
+      .attr('fill', (d) => {
+        if (d.value > 80) return colors.red
+        else if (d.value > 40) return colors.yellow
+        else return colors.green
+      })
+
+      .transition()
+      .duration(this.animation.duration)
+      .attr('height', (d) => d.value * 3)
+
+    this.svg.append('g')
+
+    this.svg
+      .selectAll('text')
+      .data(data)
+      .enter()
+      .append('text')
+      .text((d) => {
+        if (d.person.length > 7) return d.person.slice(0, 11) + '...'
+        else return d.person
+      })
+      .attr('x', (d, i) => i * 230 + 120)
+      .attr('y', this.height)
+      .attr('class', 'headline-h4')
+      .attr('text-anchor', 'middle')
+  }
+}
+
+export { GraphByType, GraphByScore, GraphBySource, GraphByComparator }

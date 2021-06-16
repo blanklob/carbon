@@ -99,3 +99,14 @@
     }
   }
 }
+
+.dashboards.comparator {
+  grid-template-columns: 1fr;
+
+  .dashboard-frame {
+    align-items: flex-start;
+  }
+  .dashboard__title {
+    text-align: left;
+  }
+}

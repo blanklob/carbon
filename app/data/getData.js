@@ -1,8 +1,5 @@
-// Fetch data
-console.log('Fetching data starts here.')
-
-export default async function () {
-  const response = await fetch('data.json')
+export default async function (user) {
+  const response = await fetch('http://138.68.103.215/data-json/' + user)
   const data = await response.json()
   return data
 }
