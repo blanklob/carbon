@@ -63,11 +63,11 @@
 
     .dashboard__bytype,
     .dashboard__bysource,
-    .dashboard__dialypollution {
+    .dashboard__byscore {
       margin: 50px 0;
     }
 
-    .dashboard__text {
+    .dashboard__labels {
       @include d-flex($direction: column);
       margin: auto;
 

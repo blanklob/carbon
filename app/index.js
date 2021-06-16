@@ -1,6 +1,6 @@
 import registerServiceWoker from './utils/sw'
 
-registerServiceWoker()
+// registerServiceWoker()
 
 // Routage basique
 document.querySelectorAll('.search__btn').forEach((item) => {

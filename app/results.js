@@ -1,11 +1,19 @@
-import './data/dataVisualisation'
-import fetchData from './data/getData'
-import registerServiceWoker from './utils/sw'
+import {
+  GraphByType,
+  GraphByScore,
+  GraphBySource
+} from 'App/data/dashboards'
+import Presentation from 'App/components/presentation'
 
-registerServiceWoker()
+new GraphByType('.dashboard__bytype').update(30)
+new GraphByScore('.dashboard__byscore').update(80)
+new GraphBySource('.dashboard__bysource').update({green: 30, yellow: 30, red: 40})
 
-fetchData().then((data) => {
-  document.querySelector('.user__fullname').innerHTML = data[0].fullname
-  document.querySelector('.score__rate').innerHTML = data[0].pollution
-  document.querySelector('.score__note').innerHTML = data[0].pollutionNote
+new Presentation().update({
+  username: 'younessidbakkasse',
+  fullname: 'Youness Id bakkasse',
+  followers: 340,
+  following: 10,
+  score: 80,
+  imageUrl: 'https://images.unsplash.com/photo-1623475049193-0fe057ab80a4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2897&q=80'
 })

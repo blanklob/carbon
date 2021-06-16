@@ -14,26 +14,22 @@
     .user__profile {
       @include d-flex;
       align-items: center;
+      .user__img {
+        border-radius: 100%;
+      }
 
-      @include max(lg) {
+      @include max(sm) {
+        flex-direction: column;
         .user__img {
-          width: 123px;
+          width: 120px;
           height: auto;
         }
       }
 
-      @include max(lg) {
-        .user__img {
-          width: 85px;
-          height: auto;
-        }
-      }
 
       .user__infos {
-        margin-left: 40px;
-        @include max(sm) {
-          margin-left: 0px;
-        }
+        margin-left: em(30px);
+
         .user__identity {
           .user__fullname {
             margin-bottom: 10px;
@@ -45,9 +41,17 @@
           }
         }
 
+        @include max(sm) {
+          margin-top: em(20px);
+          margin-left: 0px;
+        }
+
         .user__stats {
           @include d-flex;
           justify-content: flex-start;
+          @include max(sm) {
+            justify-content: flex-end;
+          }
           & > * {
             margin-right: em(30px);
           }
@@ -71,6 +75,7 @@
         }
 
         .score__rate {
+          --background: #666666;
           position: relative;
           margin-top: 5px;
           margin-right: 40px;
@@ -81,6 +86,7 @@
             margin-right: 20px;
           }
           &::after {
+
             content: '';
             position: absolute;
             right: -40px;
@@ -97,7 +103,7 @@
             width: 30px;
             height: 30px;
             border-radius: 100%;
-            background-color: $red;
+            background-color: var(--background);
           }
         }
       }
