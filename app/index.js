@@ -1,11 +1,6 @@
-import registerServiceWoker from './utils/sw'
-
+import Router from "App/classes/router"
+import registerServiceWoker from 'App/utils/sw'
 registerServiceWoker()
 
-// Routage basique
-document.querySelectorAll('.search__btn').forEach((item) => {
-  item.addEventListener('click', (e) => {
-    // <Preloader hook>
-    window.location.href = '/results'
-  })
-})
+new Router('.search__btn', '/results')
+new Router('.header__cta-btn', '/')

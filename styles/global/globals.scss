@@ -4,8 +4,24 @@ html {
 
 a {
   text-decoration: none;
-  color: $black-10;
+  color: $black-4;
   cursor: pointer;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    background: $black-4;
+    opacity: .4;
+    width: 0;
+    height: 1px;
+    transition: width .6s ease-in-out;
+  }
+  &:hover::before {
+    width: 100%;
+  }
 }
 
 button {

@@ -6,7 +6,7 @@ require('dotenv').config()
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin')
 
 
 // Directories
@@ -140,7 +140,7 @@ module.exports = {
   resolve: {
     alias: {
       Assets: assetsDir,
-      Pages: viewsDir,
+      Views: viewsDir,
       Styles: stylesDir,
       App: appDir,
       Dist: distDir
@@ -153,6 +153,4 @@ module.exports = {
     compress: true,
     port: 9000,
   },
-  devtool: false
-
 }
