@@ -40,7 +40,14 @@ class GraphByType {
       .attr('stroke', colors.black)
       .attr('stroke-width', settings.STROKE)
 
-    this.text = this.svg
+    this.text1 = this.svg
+      .append('text')
+      .attr('x', settings.RADIUS)
+      .attr('text-anchor', 'middle')
+      .attr('class', 'headline-h4')
+      .style('opacity', 0)
+
+    this.text2 = this.svg
       .append('text')
       .attr('x', settings.RADIUS)
       .attr('text-anchor', 'middle')
@@ -50,6 +57,7 @@ class GraphByType {
 
   update(dPercentage) {
     let newArea = (settings.ARIA * dPercentage) / 100
+    if (dPercentage < 3) newArea = (settings.ARIA * 5*dPercentage) / 100
     this.foreground
       .attr('cy', (d) => {
         return settings.DIAMETRE - Math.sqrt(newArea / Math.PI)
@@ -60,9 +68,22 @@ class GraphByType {
         return Math.sqrt(newArea / Math.PI) - settings.STROKE / 2
       })
 
-    this.text
-      .text((d) => dPercentage + '%')
+    this.text1
+      .text((d) => {
+        if (dPercentage < 3) return '<' + dPercentage + '%'
+        else return dPercentage + '%'
+      })
       .attr('y', settings.DIAMETRE - Math.sqrt(newArea / Math.PI) + 8)
+      .transition()
+      .duration(this.animation.duration * 1.2)
+      .style('opacity', 1)
+
+    this.text2
+      .text((d) => {
+        if (dPercentage > 70) return ''
+        else return (100-dPercentage) + '%'
+      })
+      .attr('y', (settings.DIAMETRE - 2*Math.sqrt(newArea / Math.PI) + 8)-30)
       .transition()
       .duration(this.animation.duration * 1.2)
       .style('opacity', 1)
@@ -76,7 +97,7 @@ class GraphByScore {
     this.element = document.querySelector(el)
     this.curColor = null
     this.arcWidth = 40
-    this.maxValue = 100
+    this.maxValue = 1000
     this.animation = {
       duration: 800,
     }
@@ -141,7 +162,12 @@ class GraphByScore {
     let valToColor = this.color(val),
       hold
 
-    this.text.transition().text(val + 'geqCO2')
+    this.text
+    .transition()
+    .text(d => {
+      if (val > 999) return '+' + (val-1) + 'geqCO2'
+      else return val + 'geqCO2'
+    })
 
     hold = this.curColor
     this.curColor = valToColor
@@ -221,9 +247,15 @@ class GraphBySource {
         d3.select(this)
           .attr('x', centroid[0])
           .attr('y', centroid[1])
-          .attr('class', 'headline-h4')
+          .attr('class', d => {
+            if (d.data.percentage < 10) return 'headline-h5'
+            return 'headline-h4'
+          })
           .attr('text-anchor', 'middle')
-          .text(d.data.percentage + '%')
+          .text(d => {
+            if (d.data.percentage < 2) return ''
+            return d.data.percentage + '%'
+          })
       })
   }
 }
@@ -252,7 +284,10 @@ class GraphByComparator {
       .enter()
       .append('rect')
       .attr('x', (d, i) => i * 230)
-      .attr('y', (d) => this.height - d.value * 3)
+      .attr('y', (d) => {
+        if (d.value > 99) return this.height - 30 - (d.value/110)*3
+        else return this.height - 30 - d.value * 1.5
+      })
       .attr('width', 80)
       .attr('height', 0)
       .attr('rx', '10')
@@ -264,22 +299,38 @@ class GraphByComparator {
 
       .transition()
       .duration(this.animation.duration)
-      .attr('height', (d) => d.value * 3)
+      .attr('height', (d) => {
+        if (d.value > 99) return (d.value/110)*3
+        else return d.value * 1.5
+      })
 
-    this.svg.append('g')
+    const textGroup1 = this.svg.append('g')
+    const textGroup2 = this.svg.append('g')
 
-    this.svg
+    textGroup1
+    .selectAll('text')
+    .data(data)
+    .enter()
+    .append('text')
+    .text((d) => {
+      return d.person
+    })
+    .attr('x', (d, i) => i * 230 + 120)
+    .attr('y', this.height - 30)
+    .attr('class', 'headline-h4')
+    .attr('text-anchor', 'middle')
+
+    textGroup2
       .selectAll('text')
       .data(data)
       .enter()
       .append('text')
       .text((d) => {
-        if (d.person.length > 7) return d.person.slice(0, 11) + '...'
-        else return d.person
+        return d.value + ' geqCO2'
       })
       .attr('x', (d, i) => i * 230 + 120)
-      .attr('y', this.height)
-      .attr('class', 'headline-h4')
+      .attr('y', this.height - 5)
+      .attr('class', 'text-small')
       .attr('text-anchor', 'middle')
   }
 }

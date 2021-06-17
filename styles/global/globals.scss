@@ -28,6 +28,10 @@ button {
   @include button;
 }
 
+a.link {
+  @include button;
+}
+
 input {
   @include input;
 }
@@ -69,6 +73,14 @@ h4, .headline-h4 {
   @each $bp, $h-size in $headline-h4 {
     @include min($bp) {
       @include font($h-size, bold, $black-10, .5px)
+    }
+  }
+}
+
+h5, .headline-h5 {
+  @each $bp, $h-size in $headline-h5 {
+    @include min($bp) {
+      @include font($h-size, bold, $black-10, 0px)
     }
   }
 }

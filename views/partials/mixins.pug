@@ -2,6 +2,9 @@
 mixin button(type, value)
   button.btn(class=type, type="button", name="button")= value
 
+mixin link(link, value)
+  a.link(href=link)= value
+
 //- Socials
 mixin socials(...socials)
   ul.header__social

@@ -5,37 +5,38 @@ import {
   GraphByComparator
 } from 'App/data/dashboards'
 import Presentation from 'App/components/presentation'
-import Router from "App/classes/router"
+import registerServiceWoker from 'App/utils/sw'
 import fetchData from 'App/data/getData'
+import {getDirectPbyIndirectP, getNumFollower, getScore, getBySource, getCO2} from 'App/data/processData'
 
 
-const data = fetchData(localStorage.getItem('username'))
+registerServiceWoker()
+
+fetchData(localStorage.getItem('username'))
 .then(data => {
-  let profile = data.dataTwitter[0]
+  const profile = data.userData
+
+  const graphBySourceData = getBySource(data.dataEco.graphBySource)
+  const graphByTypeData = data.dataEco.graphByType
+  const graphByScoreData = data.dataEco.graphByComparaison
+
   new Presentation().update({
-    username: profile.surname,
-    fullname: profile.name,
-    followers: profile.followers,
-    following: profile.following,
-    score: 80,
-    imageUrl: profile.profilPicUrl
+    username: profile.username,
+    fullname: profile.fullname,
+    followers: getNumFollower(profile.followers),
+    following: getNumFollower(profile.following),
+    score: getScore(profile.score),
+    imageUrl: profile.imageUrl
+  })
+
+  new GraphByType('.dashboard__bytype').update(getDirectPbyIndirectP(graphByTypeData))
+
+  // Not yet
+  new GraphByScore('.dashboard__byscore').update(getCO2(graphByScoreData.pollutionDirect))
+
+  new GraphBySource('.dashboard__bysource').update({
+    green: graphBySourceData.text,
+    yellow: graphBySourceData.image,
+    red: graphBySourceData.video
   })
 })
-
-
-new GraphByType('.dashboard__bytype').update(90)
-new GraphByScore('.dashboard__byscore').update(10)
-new GraphBySource('.dashboard__bysource').update({green: 10, yellow: 30, red: 60})
-
-new GraphByComparator('.dashboard__bycomparator').render([
-  {person: 'You', value: 30},
-  {person: 'Elon', value: 60},
-  {person: 'Bezos', value: 90},
-  {person: 'Macron', value: 120},
-  {person: 'Emmanuel Macron', value: 160}
-])
-
-
-
-
-new Router('.header__cta-btn', '/')

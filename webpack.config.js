@@ -76,10 +76,10 @@ module.exports = {
         { from: path.join(assetsDir, 'shared'), to: distDir },
       ],
     }),
-    // new WorkboxPlugin.GenerateSW({
-    //   clientsClaim: true,
-    //   skipWaiting: true,
-    // }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+    }),
   ],
 
   // Webpack Loaders

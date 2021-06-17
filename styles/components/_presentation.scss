@@ -42,6 +42,7 @@
         }
 
         @include max(sm) {
+          text-align: center;
           margin-top: em(20px);
           margin-left: 0px;
         }
@@ -53,7 +54,7 @@
             justify-content: flex-end;
           }
           & > * {
-            margin-right: em(30px);
+            margin-right: em(20px);
           }
         }
 
