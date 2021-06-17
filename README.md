@@ -1,19 +1,26 @@
-# Projet de fin d'étude 
+# Présentation du projet:
 
-### Installation:
-- Avant de se lancer à coder sur le projet, il faudra d'abord installer toutes les dependecies dont le projet aura besoin pour fonctionner correctement comme webpack, postcss, yarn etc... On commernce avec Yarn
 
-#### Pourquoi Yarn si on peut utiliser NPM ?
-- En toute simplicité, Yarn s'implifier la vie, son cli est très puissant qui permet de lier toutes nos packages entre eux avec les bonnes versions ainsi que sa capacité de telécharger les packages/libs très rapidement, je peux en citer plusieurs autres avantages...
+La pollution générée par l’industrie du net et son impact sur le climat sont équivalents à ceux du secteur de l’aviation.
 
-Pour installer Yarn, il faut utiliser la commande NPM suivant, c'est un peu comme installer Google Chrome pour la premiere fois on utilisant Edge ou IE:
+L'empreinte écologique du numérique est loin d'être négligeable même si elle paraît anodine comparée à d'autres secteurs et qu'il est difficile de croire que l'on puisse "polluer" en surfant sur Internet et pourtant c'est ce qui se passe !
 
-```npm install yarn```
+Nous avons décidé de traiter cette problématique en se focalisant sur l'impact des réseaux sociaux sur l'environnement et de là, notre choix s'est porté sur le réseau social Twitter.
 
-- Après le télechargement est terminé, on peut installer le necessaire avec la comande Yarn suivante: 
+A fin de garantir la meilleure expérience utilisateur (qu'elle soit **interactive, immersive** mais aussi **impactante),** nous avons conçu et développé une datavisualisation adaptée à notre thématique. 
 
-```yarn install```
+Quel est donc l'impact environnemental de votre activité sur Twitter ? 
 
-- Après l'installation est complète avec succées, vous pouvez lancer le serveur de development avec la commande suivante puis voir ``localhost:9000`` sur un navigateur de votre choix, je recommande Chrome pour ces devtools puissantes. 
+On vous donne rendez-vous sur notre site [Carbon](https://carbonproject.netlify.app/) pour découvrir la réponse !
 
-```yarn dev```
+# Organisation du projet: 
+
+En ce qui concerne l'organisation, nous avons opté d'utiliser l'application [Notion](https://www.notion.so/carbonproject/Compte-rendu-data-Ecologique-60d2de0b9e514b54a05626d54f7154ba), nous avons mis en place plusieurs workspaces (calendrier, data ...), et delà une mise à jour quotidienne été établie, ce qui nous permettait de suivre l'avancement de notre projet.
+
+# Technologies:
+
+__Front-End__: Pug, SCSS, JS, D3.JS
+
+Pour la représentation et la structure nous avons choisi : [Pug](https://pugjs.org/api/getting-started.html) /[SCSS](https://sass-lang.com/documentation).
+
+En ce qui concerne la récupération des données du back-end, nous avons mis en place une requête fetch qui nous permet de récupérer  les données sous format JSON et de les représenter sous forme de dataviz à l'aide de [D3.JS](https://d3js.org/)
