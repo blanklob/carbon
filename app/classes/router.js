@@ -4,7 +4,7 @@ export default class Router {
     this.btns.forEach((item) => {
       item.addEventListener('click', (e) => {
 
-        window.location.href = newRoute + '.html'
+        window.location.href = newRoute +
       })
     })
   }
