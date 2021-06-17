@@ -24,3 +24,16 @@ __Front-End__: Pug, SCSS, JS, D3.JS
 Pour la représentation et la structure nous avons choisi : [Pug](https://pugjs.org/api/getting-started.html) /[SCSS](https://sass-lang.com/documentation).
 
 En ce qui concerne la récupération des données du back-end, nous avons mis en place une requête fetch qui nous permet de récupérer  les données sous format JSON et de les représenter sous forme de dataviz à l'aide de [D3.JS](https://d3js.org/)
+
+Pug est un outil de template qui permet de générer du code HTML en compilant via Webpack.
+
+L’avantage de PUG est la simplification du code HTML. L’utilisation de balises n’est plus nécessaire, grâce au système d’indentations. Les classes et les id sont définis par des raccourcis, respectivement “.” et “#”. 
+
+En plus de sa simplification, le code obtenu est plus clair et plus agréable à lire. Le language Pug est peu éloigné du Javascript, ce qui permet l’injection de code Javascript dans les fichiers Pug.
+
+L’avantage de Pug réside également dans les nombreuses fonctionnalités qu’il offre comme par exemple la possibilité de définir des variables. On peut en outre écrire du JS directement depuis le fichier .pug, qui sera converti en page HTML.
+
+L’écriture avec sass est mieux organisée, plus lisible, moins répétitive. Ce qui booste les performances du site et rend le travail sur le fichier plus agréable notamment avec le responsive.
+
+## PWA 
+Notre application est aussi un PWA application cross plateform que vous pouvez installez comme une application desktop/mobile, on bien fais attention au performance le responsive ainsi que la sécurité c'est pour ça on a créer un backend personalisé pour stoquer les codes d'accées au API de Twitter à la place de les stocker en client.
