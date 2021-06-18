@@ -4,6 +4,12 @@ import getUsername from 'App/data/getUsername'
 import {
   GraphByComparator
 } from 'App/data/dashboards'
+
+import Preloader from 'App/components/preloader'
+
+
+new Preloader('.preloader', 800)
+
 registerServiceWoker()
 
 

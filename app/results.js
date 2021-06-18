@@ -8,7 +8,11 @@ import Presentation from 'App/components/presentation'
 import registerServiceWoker from 'App/utils/sw'
 import fetchData from 'App/data/getData'
 import {getDirectPbyIndirectP, getNumFollower, getScore, getBySource, getCO2} from 'App/data/processData'
+import Preloader from 'App/components/preloader'
 
+console.log('fkeo')
+
+new Preloader('.preloader', 800)
 
 registerServiceWoker()
 
@@ -18,7 +22,7 @@ fetchData(localStorage.getItem('username'))
 
   const graphBySourceData = getBySource(data.dataEco.graphBySource)
   const graphByTypeData = data.dataEco.graphByType
-  const graphByScoreData = data.dataEco.graphByComparaison
+  const graphByScoreData = data.dataEco.graphByScore
 
   new Presentation().update({
     username: profile.username,

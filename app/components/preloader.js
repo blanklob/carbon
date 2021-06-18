@@ -1,9 +1,10 @@
-import Component from '../classes/Component'
-
-export default class extends Component {
-  constructor(element) {
-    super(element)
+export default class Preloader {
+  constructor(selector, duration) {
+    console.log('executed')
+    this.element = document.querySelector(selector)
+    this.duration = duration
     this.changeOpacity()
+
   }
 
   changeOpacity() {
