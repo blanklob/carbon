@@ -3,7 +3,6 @@ export default class Preloader {
     this.element = document.querySelector(selector)
     this.duration = duration
     this.changeOpacity()
-
   }
 
   changeOpacity() {
@@ -13,7 +12,7 @@ export default class Preloader {
       onComplete: () => {
         this.element.remove()
         gsap.to('main', {
-          duration: .7,
+          duration: 0.7,
           opacity: 1,
         })
       },

@@ -57,7 +57,7 @@ class GraphByType {
 
   update(dPercentage) {
     let newArea = (settings.ARIA * dPercentage) / 100
-    if (dPercentage < 3) newArea = (settings.ARIA * 5*dPercentage) / 100
+    if (dPercentage < 3) newArea = (settings.ARIA * 5 * dPercentage) / 100
     this.foreground
       .attr('cy', (d) => {
         return settings.DIAMETRE - Math.sqrt(newArea / Math.PI)
@@ -81,9 +81,9 @@ class GraphByType {
     this.text2
       .text((d) => {
         if (dPercentage > 70) return ''
-        else return (100-dPercentage) + '%'
+        else return 100 - dPercentage + '%'
       })
-      .attr('y', (settings.DIAMETRE - 2*Math.sqrt(newArea / Math.PI) + 8)-30)
+      .attr('y', settings.DIAMETRE - 2 * Math.sqrt(newArea / Math.PI) + 8 - 30)
       .transition()
       .duration(this.animation.duration * 1.2)
       .style('opacity', 1)
@@ -162,10 +162,8 @@ class GraphByScore {
     let valToColor = this.color(val),
       hold
 
-    this.text
-    .transition()
-    .text(d => {
-      if (val > 999) return '+' + (val-1) + 'geqCO2'
+    this.text.transition().text((d) => {
+      if (val > 999) return '+' + (val - 1) + 'geqCO2'
       else return val + 'geqCO2'
     })
 
@@ -247,12 +245,12 @@ class GraphBySource {
         d3.select(this)
           .attr('x', centroid[0])
           .attr('y', centroid[1])
-          .attr('class', d => {
+          .attr('class', (d) => {
             if (d.data.percentage < 10) return 'headline-h5'
             return 'headline-h4'
           })
           .attr('text-anchor', 'middle')
-          .text(d => {
+          .text((d) => {
             if (d.data.percentage < 2) return ''
             return d.data.percentage + '%'
           })
@@ -285,7 +283,7 @@ class GraphByComparator {
       .append('rect')
       .attr('x', (d, i) => i * 230)
       .attr('y', (d) => {
-        if (d.value > 99) return this.height - 30 - (d.value/110)*3
+        if (d.value > 99) return this.height - 30 - (d.value / 110) * 3
         else return this.height - 30 - d.value * 1.5
       })
       .attr('width', 80)
@@ -300,7 +298,7 @@ class GraphByComparator {
       .transition()
       .duration(this.animation.duration)
       .attr('height', (d) => {
-        if (d.value > 99) return (d.value/110)*3
+        if (d.value > 99) return (d.value / 110) * 3
         else return d.value * 1.5
       })
 
@@ -308,17 +306,17 @@ class GraphByComparator {
     const textGroup2 = this.svg.append('g')
 
     textGroup1
-    .selectAll('text')
-    .data(data)
-    .enter()
-    .append('text')
-    .text((d) => {
-      return d.person
-    })
-    .attr('x', (d, i) => i * 230 + 120)
-    .attr('y', this.height - 30)
-    .attr('class', 'headline-h4')
-    .attr('text-anchor', 'middle')
+      .selectAll('text')
+      .data(data)
+      .enter()
+      .append('text')
+      .text((d) => {
+        return d.person
+      })
+      .attr('x', (d, i) => i * 230 + 120)
+      .attr('y', this.height - 30)
+      .attr('class', 'headline-h4')
+      .attr('text-anchor', 'middle')
 
     textGroup2
       .selectAll('text')

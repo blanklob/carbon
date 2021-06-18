@@ -1,7 +1,7 @@
 const getDirectPbyIndirectP = (ByTypeData) => {
-  let {pollutionDirect, pollutionIndirect} = ByTypeData
+  let { pollutionDirect, pollutionIndirect } = ByTypeData
 
-  let DPpercentage = Math.floor(100*pollutionDirect/pollutionIndirect)
+  let DPpercentage = Math.floor((100 * pollutionDirect) / pollutionIndirect)
 
   if (DPpercentage < 1) return 1
   else if (DPpercentage > 100) return 100
@@ -9,11 +9,10 @@ const getDirectPbyIndirectP = (ByTypeData) => {
 }
 
 const getNumFollower = (num) => {
-  if (num > 999999) return Math.floor(num/1000000) + 'M '
-  else if (num > 9999) return Math.floor(num/10000) + 'K '
+  if (num > 999999) return Math.floor(num / 1000000) + 'M '
+  else if (num > 9999) return Math.floor(num / 10000) + 'K '
   else return Math.floor(num) + ' '
 }
-
 
 const getScore = (score) => {
   if (score > 100) return 99
@@ -27,7 +26,7 @@ const getCO2 = (PD) => {
 }
 
 const getBySource = (graphBySourceData) => {
-  let {texts, images} = graphBySourceData
+  let { texts, images } = graphBySourceData
   let text = Math.floor(texts)
   let image = Math.floor(images)
   return {
@@ -37,10 +36,4 @@ const getBySource = (graphBySourceData) => {
   }
 }
 
-export {
-  getNumFollower,
-  getDirectPbyIndirectP,
-  getScore,
-  getBySource,
-  getCO2
-}
+export { getNumFollower, getDirectPbyIndirectP, getScore, getBySource, getCO2 }

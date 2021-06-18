@@ -7,7 +7,7 @@
     "dev": "webpack serve",
     "build": "webpack",
     "watch": "webpack --watch",
-    "serve": "serve ./dist",
+    "serve": "serve -p 9000 ./dist",
     "format": "prettier --write app/*/*.js"
   },
   "browserslist": [
